@@ -1,7 +1,7 @@
 {
-  "name": "hanseithon-front",
+  "name": "hanseithon-frontend",
   "version": "1.0.0",
-  "repository": "https://github.com/team-codedc/hanseithon-front.git",
+  "repository": "https://github.com/team-codedc/hanseithon-frontend.git",
   "author": "HanSeo0507 <i.hansu.lee@gmail.com>",
   "license": "UNLICENSED",
   "private": true,
