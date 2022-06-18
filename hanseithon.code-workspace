@@ -1,0 +1,13 @@
+{
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "../hanseithon-backend"
+    }
+  ],
+  "settings": {
+    "typescript.enablePromptUseWorkspaceTsdk": true
+  }
+}
