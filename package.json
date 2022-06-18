@@ -6,6 +6,8 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
+    "prepare": "husky install",
+    "lint-staged": "lint-staged",
     "start": "cross-env NODE_ENV=development webpack --config ./webpack/webpack.development.js",
     "dev": "cross-env NODE_ENV=development webpack server --config ./webpack/webpack.development.js",
     "build": "cross-env NODE_ENV=production webpack --config ./webpack/webpack.production.js",
@@ -22,6 +24,8 @@
     "@babel/preset-env": "^7.18.2",
     "@babel/preset-react": "^7.17.12",
     "@babel/preset-typescript": "^7.17.12",
+    "@commitlint/cli": "^17.0.2",
+    "@commitlint/config-conventional": "^17.0.2",
     "@svgr/webpack": "^6.2.1",
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
@@ -43,6 +47,8 @@
     "file-loader": "^6.2.0",
     "fork-ts-checker-webpack-plugin": "^7.2.11",
     "html-webpack-plugin": "^5.5.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.2",
     "prettier": "^2.7.1",
     "style-loader": "^3.3.1",
     "terser-webpack-plugin": "^5.3.3",
@@ -54,5 +60,11 @@
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.9.2",
     "webpack-merge": "^5.8.0"
+  },
+  "lint-staged": {
+    "**/*.+(ts|tsx|js|jsx)": [
+      "eslint --fix --cache",
+      "prettier --write"
+    ]
   }
 }
