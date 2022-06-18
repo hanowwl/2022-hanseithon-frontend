@@ -1,0 +1,18 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    /* webpack */
+    "fullhash",
+    "svgr",
+
+    /* commitlint */
+    "commitlint",
+
+    /* project words */
+    "hansei",
+    "hanseithon"
+  ],
+  "flagWords": [],
+  "ignorePaths": ["node_modules/**"]
+}
