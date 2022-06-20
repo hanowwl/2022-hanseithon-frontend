@@ -7,6 +7,12 @@ const common = require("./webpack.common");
 module.exports = merge(common, {
   mode: "development",
   devServer: {
+    proxy: {
+      "/api": {
+        target: "http://localhost:4000",
+        changeOrigin: true,
+      },
+    },
     static: {
       directory: path.resolve("public"),
     },
