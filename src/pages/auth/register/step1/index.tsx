@@ -1,5 +1,3 @@
 import React from "react";
 
-import * as S from "./styled";
-
-export const RegisterStep1Page: React.FC = () => <S.Wrapper />;
+export const RegisterStep1Page: React.FC = () => <div />;

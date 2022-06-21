@@ -1,7 +1,7 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
 import { useForm } from "react-hook-form";
-
-import * as S from "./styled";
 
 export type LoginFormValues = {
   username: string;
@@ -11,12 +11,10 @@ export type LoginFormValues = {
 export const LoginPage: React.FC = () => {
   const { register, handleSubmit } = useForm<LoginFormValues>();
 
-  const onSubmit = ({ username, password }: LoginFormValues) => {
-    console.log(username, password);
-  };
+  const onSubmit = ({ username, password }: LoginFormValues) => {};
 
   return (
-    <S.Wrapper>
+    <div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
           type="text"
@@ -39,6 +37,6 @@ export const LoginPage: React.FC = () => {
         />
         <button type="submit">로그인</button>
       </form>
-    </S.Wrapper>
+    </div>
   );
 };
