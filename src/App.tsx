@@ -1,5 +1,5 @@
 import React from "react";
 
-const App: React.FC = () => <div>2022 한세톤</div>;
+import { AppRouter } from "./routes";
 
-export default App;
+export const App: React.FC = () => <AppRouter />;
