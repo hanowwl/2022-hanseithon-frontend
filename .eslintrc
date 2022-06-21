@@ -44,7 +44,12 @@
     ],
     "import/prefer-default-export": "off",
     "no-use-before-define": "off",
-    "prettier/prettier": "error",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
     "react-hooks/exhaustive-deps": "warn",
     "react/function-component-definition": [
       "error",
