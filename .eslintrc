@@ -11,6 +11,7 @@
     "@typescript-eslint/no-unused-vars": ["error"],
     "arrow-body-style": ["error", "as-needed"],
     "global-require": "off",
+    "no-console": "off",
     "import/export": "off",
     "import/extensions": [
       "error",
