@@ -60,7 +60,7 @@
         "extensions": [".tsx", ".jsx"]
       }
     ],
-    "react/jsx-props-no-spreading": "warn",
+    "react/jsx-props-no-spreading": "off",
     "react/prop-types": "off"
   },
   "overrides": [
