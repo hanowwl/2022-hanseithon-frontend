@@ -1,5 +1,12 @@
 import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-const App: React.FC = () => <div>2022 한세톤</div>;
+import { MainPage } from "./pages";
 
-export default App;
+export const App: React.FC = () => (
+  <BrowserRouter>
+    <Routes>
+      <Route index element={<MainPage />} />
+    </Routes>
+  </BrowserRouter>
+);
