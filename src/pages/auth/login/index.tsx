@@ -1,17 +1,15 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
 import { useForm } from "react-hook-form";
 
-export type LoginFormValues = {
-  username: string;
-  password: string;
-};
+import { LoginFormValues } from "src/api/user";
+import { useLogin } from "src/hook/query";
 
 export const LoginPage: React.FC = () => {
   const { register, handleSubmit } = useForm<LoginFormValues>();
-
-  const onSubmit = ({ username, password }: LoginFormValues) => {};
+  const { mutate } = useLogin();
+  const onSubmit = ({ username, password }: LoginFormValues) => {
+    mutate({ username, password });
+  };
 
   return (
     <div>
