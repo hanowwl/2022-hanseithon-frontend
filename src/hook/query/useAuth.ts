@@ -1,4 +1,10 @@
-import { useMutation, UseMutationResult } from "react-query";
+import {
+  useMutation,
+  UseMutationResult,
+  useQuery,
+  UseQueryResult,
+} from "react-query";
+import { useRecoilState } from "recoil";
 
 import {
   APIErrorResponse,
@@ -6,21 +12,50 @@ import {
   APIResponseStatusType,
   setAccessToken,
 } from "src/api";
-import { login, LoginFormValues } from "src/api/user";
+import {
+  getUserProfile,
+  login,
+  LoginFormValues,
+  UserProfileResponse,
+} from "src/api/user";
+import { globalAccessToken } from "src/store";
 
 export const useLogin = (): UseMutationResult<
   APIResponse<{ accessToken: string; refreshToken: string }>,
   APIErrorResponse,
   LoginFormValues
-> =>
-  useMutation("useLogin", login, {
+> => {
+  const [token, setToken] = useRecoilState(globalAccessToken);
+  return useMutation("useLogin", login, {
     onSuccess: (data: {
       Status: APIResponseStatusType;
       Message: string;
       result: { accessToken: string; refreshToken: string };
     }) => {
-      localStorage.setItem("accessToken", data.result.accessToken);
       localStorage.setItem("refreshToken", data.result.refreshToken);
-      setAccessToken(data.result.accessToken);
+      setToken({ accessToken: data.result.accessToken });
+      setAccessToken(token.accessToken);
     },
   });
+};
+
+export const useFetchUser = (): UseQueryResult<
+  APIResponse<UserProfileResponse>,
+  APIErrorResponse
+> => {
+  const [token, setToken] = useRecoilState(globalAccessToken);
+  return useQuery(
+    "useFetchUser",
+    () => {
+      if (token) setAccessToken(token.accessToken);
+      return getUserProfile();
+    },
+    {
+      onError: () => {
+        setToken({ accessToken: "" });
+        setAccessToken(null);
+      },
+      retry: 0,
+    },
+  );
+};

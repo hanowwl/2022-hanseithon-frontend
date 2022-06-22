@@ -5,6 +5,17 @@ export interface LoginFormValues {
   password: string;
 }
 
+export interface UserProfileResponse {
+  id: number;
+  username: string;
+  name: string;
+  studentDepartment: string;
+  studentGrade: number;
+  studentClassroom: number;
+  studentNumber: number;
+  networkVerified: boolean;
+}
+
 export const login = async ({
   username,
   password,
@@ -15,5 +26,10 @@ export const login = async ({
     username,
     password,
   });
+  return data;
+};
+
+export const getUserProfile = async (): Promise<UserProfileResponse> => {
+  const { data } = await instance.get("/");
   return data;
 };
