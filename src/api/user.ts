@@ -41,6 +41,6 @@ export const getRefreshTokenAuth = async (): Promise<
 > => {
   const token = localStorage.getItem("refreshToken");
   if (token) setAccessToken(token);
-  const { data } = await instance.post(API_SUFFIX.GETTOKEN);
+  const { data } = await instance.post(API_SUFFIX.REFRESH);
   return data;
 };

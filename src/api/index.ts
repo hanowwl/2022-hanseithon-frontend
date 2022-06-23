@@ -3,7 +3,7 @@ import axios from "axios";
 export const API_SUFFIX = {
   LOGIN: "/api/auth/login",
   PROFILE: "/api/users/profile",
-  GETTOKEN: "/api/auth/refresh",
+  REFRESH: "/api/auth/refresh",
 };
 
 export const instance = axios.create({
