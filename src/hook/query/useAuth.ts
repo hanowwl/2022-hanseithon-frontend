@@ -4,6 +4,7 @@ import {
   useQuery,
   UseQueryResult,
 } from "react-query";
+import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 
 import {
@@ -13,6 +14,7 @@ import {
   setAccessToken,
 } from "src/api";
 import {
+  getRefreshTokenAuth,
   getUserProfile,
   login,
   LoginFormValues,
@@ -25,6 +27,7 @@ export const useLogin = (): UseMutationResult<
   APIErrorResponse,
   LoginFormValues
 > => {
+  const navigate = useNavigate();
   const [token, setToken] = useRecoilState(globalAccessToken);
   return useMutation("useLogin", login, {
     onSuccess: (data: {
@@ -33,9 +36,11 @@ export const useLogin = (): UseMutationResult<
       result: { accessToken: string; refreshToken: string };
     }) => {
       localStorage.setItem("refreshToken", data.result.refreshToken);
-      setToken({ accessToken: data.result.accessToken });
+      setToken({ accessToken: data.result.accessToken, state: true });
       setAccessToken(token.accessToken);
+      navigate("/");
     },
+    retry: 0,
   });
 };
 
@@ -47,12 +52,18 @@ export const useFetchUser = (): UseQueryResult<
   return useQuery(
     "useFetchUser",
     () => {
-      if (token) setAccessToken(token.accessToken);
-      return getUserProfile();
+      if (token.state) {
+        setAccessToken(token.accessToken);
+        return getUserProfile();
+      }
+      return getRefreshTokenAuth().then((data) => {
+        setAccessToken(data.result.accessToken);
+        return getUserProfile();
+      });
     },
     {
       onError: () => {
-        setToken({ accessToken: "" });
+        setToken({ accessToken: "", state: false });
         setAccessToken(null);
       },
       retry: 0,

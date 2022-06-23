@@ -1,4 +1,4 @@
-import { APIResponse, API_SUFFIX, instance } from ".";
+import { APIResponse, API_SUFFIX, instance, setAccessToken } from ".";
 
 export interface LoginFormValues {
   username: string;
@@ -29,7 +29,18 @@ export const login = async ({
   return data;
 };
 
-export const getUserProfile = async (): Promise<UserProfileResponse> => {
-  const { data } = await instance.get("/");
+export const getUserProfile = async (): Promise<
+  APIResponse<UserProfileResponse>
+> => {
+  const { data } = await instance.get(API_SUFFIX.PROFILE);
+  return data;
+};
+
+export const getRefreshTokenAuth = async (): Promise<
+  APIResponse<{ accessToken: string }>
+> => {
+  const token = localStorage.getItem("refreshToken");
+  if (token) setAccessToken(token);
+  const { data } = await instance.post(API_SUFFIX.GETTOKEN);
   return data;
 };

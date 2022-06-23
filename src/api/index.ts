@@ -1,13 +1,12 @@
 import axios from "axios";
 
-export const API_BASE_URL = "http://localhost:8000";
-
 export const API_SUFFIX = {
-  LOGIN: "/login",
+  LOGIN: "/api/auth/login",
+  PROFILE: "/api/users/profile",
+  GETTOKEN: "/api/auth/refresh",
 };
 
 export const instance = axios.create({
-  baseURL: API_BASE_URL,
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
