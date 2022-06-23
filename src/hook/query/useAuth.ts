@@ -67,6 +67,7 @@ export const useFetchUser = (): UseQueryResult<
         setAccessToken(null);
       },
       retry: 0,
+      staleTime: 3600,
     },
   );
 };
