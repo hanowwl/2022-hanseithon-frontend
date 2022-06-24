@@ -1,5 +1,9 @@
 import React from "react";
 
-import * as S from "./styled";
+import { useFetchUser } from "src/hook/query";
 
-export const MainPage: React.FC = () => <S.Wrapper>메인 페이지</S.Wrapper>;
+export const MainPage: React.FC = () => {
+  const { data: user, isFetching } = useFetchUser();
+
+  return <div>{!isFetching && user?.result.name}님 안녕하세요</div>;
+};
