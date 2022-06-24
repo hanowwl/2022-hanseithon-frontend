@@ -31,8 +31,8 @@ export const useLogin = (): UseMutationResult<
   const [token, setToken] = useRecoilState(globalAccessToken);
   return useMutation("useLogin", login, {
     onSuccess: (data: {
-      Status: APIResponseStatusType;
-      Message: string;
+      status: APIResponseStatusType;
+      message: string;
       result: { accessToken: string; refreshToken: string };
     }) => {
       localStorage.setItem("refreshToken", data.result.refreshToken);

@@ -1,12 +1,14 @@
 import axios from "axios";
 
 export const API_SUFFIX = {
-  LOGIN: "/api/auth/login",
-  PROFILE: "/api/users/profile",
-  REFRESH: "/api/auth/refresh",
+  BASEURL: "/api",
+  LOGIN: "/auth/login",
+  PROFILE: "/users/profile",
+  REFRESH: "/auth/refresh",
 };
 
 export const instance = axios.create({
+  baseURL: API_SUFFIX.BASEURL,
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
@@ -16,14 +18,14 @@ export const instance = axios.create({
 export type APIResponseStatusType = "SUCCESS" | "FAILED";
 
 export interface APIResponse<T = unknown> {
-  Status: APIResponseStatusType;
-  Message: string;
+  status: APIResponseStatusType;
+  message: string;
   result: T;
 }
 
 export interface APIErrorResponse {
-  Status: "FAILED";
-  Message: string;
+  status: "FAILED";
+  message: string;
   result?: null;
 }
 
