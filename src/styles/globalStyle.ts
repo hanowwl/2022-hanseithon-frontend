@@ -3,6 +3,7 @@ import { css } from "@emotion/react";
 export const globalStyles = css`
   :root {
     --color-primary: #4b5fff;
+    --color-primary-darker: #3047ff;
     --color-text-primary: white;
     --color-background: #101012;
 
