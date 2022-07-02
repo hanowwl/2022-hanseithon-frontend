@@ -1,12 +1,10 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useCallback, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 import * as S from "./styled";
 
-export type RegisterStep1Values = {
+type RegisterStep1Values = {
   service: boolean;
   privacy: boolean;
   student: boolean;
@@ -20,20 +18,21 @@ export const RegisterStep1Page: React.FC = () => {
     watch,
     formState: { errors },
   } = useForm<RegisterStep1Values>();
-
   const [isAllChecked, setIsAllChecked] = useState<boolean>(false);
-  const onSubmit = ({ service, privacy, student }: RegisterStep1Values) => {};
   const navigate = useNavigate();
 
   const allAgreeHandler = useCallback(() => {
+    setIsAllChecked((prev) => !prev);
     if (!isAllChecked) {
-      setIsAllChecked(true);
       reset({ service: true, privacy: true, student: true });
     } else {
-      setIsAllChecked(false);
       reset({ service: false, privacy: false, student: false });
     }
   }, [isAllChecked, reset]);
+
+  const onSubmitHandler = handleSubmit((data: RegisterStep1Values) => {
+    console.log(data);
+  });
 
   useEffect(() => {
     const subscription = watch((value) => {
@@ -47,7 +46,7 @@ export const RegisterStep1Page: React.FC = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={onSubmitHandler}>
         <div>
           <label htmlFor="isAllChecked">
             <S.CircleCheck checked={isAllChecked} />
