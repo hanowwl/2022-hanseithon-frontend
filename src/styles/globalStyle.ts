@@ -5,6 +5,8 @@ export const globalStyles = css`
     --color-primary: #4b5fff;
     --color-text-primary: white;
     --color-background: #101012;
+
+    --modal-background: #18181a;
   }
 
   * {

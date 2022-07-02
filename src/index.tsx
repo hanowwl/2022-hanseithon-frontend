@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { RecoilRoot } from "recoil";
 
 import { App } from "./App";
+import { ModalProvider } from "./components";
 import { globalStyles } from "./styles";
 
 const root = ReactDOM.createRoot(document.getElementById("app") as HTMLElement);
@@ -22,6 +23,7 @@ root.render(
     <RecoilRoot>
       <QueryClientProvider client={queryClient}>
         <Global styles={globalStyles} />
+        <ModalProvider />
         <App />
       </QueryClientProvider>
     </RecoilRoot>
