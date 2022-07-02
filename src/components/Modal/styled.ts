@@ -36,6 +36,19 @@ export const ModalContainer = styled.div<{ width?: string | number }>`
   padding: 4rem;
   border-radius: 0.7rem;
   background-color: var(--modal-background);
+  animation: modal_fade_in 300ms;
+
+  @keyframes modal_fade_in {
+    from {
+      opacity: 0;
+      margin-top: -5rem;
+    }
+
+    to {
+      opacity: 1;
+      margin-top: 0;
+    }
+  }
 `;
 
 export const ModalContentWrapper = styled.div`
