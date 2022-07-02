@@ -7,6 +7,7 @@ import {
   RegisterStep1Page,
   RegisterStep2Page,
   RegisterStep3Page,
+  HackathonMainPage,
 } from "./pages";
 
 export const App: React.FC = () => (
@@ -24,6 +25,9 @@ export const App: React.FC = () => (
           path="register"
           element={<Navigate replace to="/auth/login" />}
         />
+      </Route>
+      <Route path="hackathon">
+        <Route index element={<HackathonMainPage />} />
       </Route>
     </Routes>
   </BrowserRouter>
