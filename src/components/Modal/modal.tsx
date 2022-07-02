@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import { Button, ButtonVariantType } from "../Button";
 import * as S from "./styled";
@@ -26,35 +26,24 @@ export const Modal: React.FC<ModalProps> = ({
   button,
   handleOnConfirm,
   handleOnClose,
-}) => {
-  useEffect(() => {
-    document.body.style.cssText = `position: fixed; top: -${window.scrollY}px`;
-    return () => {
-      const scrollY = document.body.style.top;
-      document.body.style.cssText = `position: ""; top: "";`;
-      window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
-    };
-  }, []);
-
-  return (
-    <S.ModalWrapper>
-      <S.ModalContainer width={width}>
-        <h1>{title}</h1>
-        <div>{content}</div>
-        <S.ModalControlsContainer>
-          <Button
-            variant={button.variant || "contained"}
-            onClick={handleOnConfirm}
-          >
-            {button.text}
+}) => (
+  <S.ModalWrapper>
+    <S.ModalContainer width={width}>
+      <h1>{title}</h1>
+      <div>{content}</div>
+      <S.ModalControlsContainer>
+        <Button
+          variant={button.variant || "contained"}
+          onClick={handleOnConfirm}
+        >
+          {button.text}
+        </Button>
+        {type === "CONFIRM" && (
+          <Button variant="outlined" onClick={handleOnClose}>
+            닫기
           </Button>
-          {type === "CONFIRM" && (
-            <Button variant="outlined" onClick={handleOnClose}>
-              닫기
-            </Button>
-          )}
-        </S.ModalControlsContainer>
-      </S.ModalContainer>
-    </S.ModalWrapper>
-  );
-};
+        )}
+      </S.ModalControlsContainer>
+    </S.ModalContainer>
+  </S.ModalWrapper>
+);
