@@ -18,6 +18,7 @@ export const RegisterStep1Page: React.FC = () => {
     watch,
     formState: { errors },
   } = useForm<RegisterStep1Values>();
+  
   const [isAllChecked, setIsAllChecked] = useState<boolean>(false);
   const navigate = useNavigate();
 
@@ -46,7 +47,9 @@ export const RegisterStep1Page: React.FC = () => {
 
   return (
     <div>
+
       <form onSubmit={onSubmitHandler}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <label htmlFor="isAllChecked">
             <S.CircleCheck checked={isAllChecked} />
@@ -100,6 +103,7 @@ export const RegisterStep1Page: React.FC = () => {
           <span>개인정보 수집 이용 동의</span>
         </div>
         {errors.privacy?.message}
+
         <button
           type="submit"
           disabled={!isAllChecked}
