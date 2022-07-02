@@ -1,16 +1,14 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useCallback, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 import * as S from "./styled";
 
-export type RegisterStep1Values = {
+type RegisterStep1Values = {
   service: boolean;
   privacy: boolean;
   student: boolean;
 };
-
 export const RegisterStep1Page: React.FC = () => {
   const {
     register,
@@ -21,17 +19,20 @@ export const RegisterStep1Page: React.FC = () => {
   } = useForm<RegisterStep1Values>();
 
   const [isAllChecked, setIsAllChecked] = useState<boolean>(false);
-  const onSubmit = ({ service, privacy, student }: RegisterStep1Values) => {};
+  const navigate = useNavigate();
 
   const allAgreeHandler = useCallback(() => {
+    setIsAllChecked((prev) => !prev);
     if (!isAllChecked) {
-      setIsAllChecked(true);
       reset({ service: true, privacy: true, student: true });
     } else {
-      setIsAllChecked(false);
       reset({ service: false, privacy: false, student: false });
     }
   }, [isAllChecked, reset]);
+
+  const onSubmitHandler = handleSubmit((data: RegisterStep1Values) => {
+    console.log(data);
+  });
 
   useEffect(() => {
     const subscription = watch((value) => {
@@ -44,7 +45,7 @@ export const RegisterStep1Page: React.FC = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={onSubmitHandler}>
         <div>
           <label htmlFor="isAllChecked">
             <S.CircleCheck checked={isAllChecked} />
@@ -58,7 +59,6 @@ export const RegisterStep1Page: React.FC = () => {
           </label>
           <span>모두 동의합니다</span>
         </div>
-
         <div>
           <label htmlFor="student">
             <S.CircleCheck checked={watch("student")} />
@@ -71,7 +71,6 @@ export const RegisterStep1Page: React.FC = () => {
           <span>재학생이 맞으신가요?</span>
         </div>
         {errors.student?.message}
-
         <div>
           <label htmlFor="service">
             <S.CircleCheck checked={watch("service")} />
@@ -86,7 +85,6 @@ export const RegisterStep1Page: React.FC = () => {
           <span>서비스 이용약관</span>
         </div>
         {errors.service?.message}
-
         <div>
           <label htmlFor="privacy">
             <S.CircleCheck checked={watch("privacy")} />
@@ -101,6 +99,13 @@ export const RegisterStep1Page: React.FC = () => {
           <span>개인정보 수집 이용 동의</span>
         </div>
         {errors.privacy?.message}
+        <button
+          type="submit"
+          disabled={!isAllChecked}
+          onClick={() => isAllChecked && navigate("/auth/register/step3")}
+        >
+          다음으로
+        </button>
       </form>
     </div>
   );

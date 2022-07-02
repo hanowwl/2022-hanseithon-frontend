@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
-import { SCHOOL } from "src/contents/school";
+import { SCHOOL } from "src/constants/school";
 
 type RegisterStep3Values = {
   username: string;
