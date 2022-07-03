@@ -6,8 +6,9 @@ export const globalStyles = css`
     --color-primary-darker: #3047ff;
     --color-text-primary: white;
     --color-background: #101012;
+    --color-foreground: #18181a;
 
-    --modal-background: #18181a;
+    --modal-background: var(--color-foreground);
   }
 
   * {
@@ -28,5 +29,6 @@ export const globalStyles = css`
     letter-spacing: -0.1rem;
     color: var(--color-text-primary);
     background-color: var(--color-background);
+    //  overflow-x: hidden;
   }
 `;
