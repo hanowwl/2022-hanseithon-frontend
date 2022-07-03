@@ -10,7 +10,7 @@ export const TitleContainer = styled.div`
 `;
 
 export const JoinDeadLineTitle = styled.h1`
-  margin: 0;
+  margin: 0 0 -1.5rem 0;
   padding: 0;
   text-align: center;
   font-size: 3.2rem;
@@ -26,7 +26,7 @@ export const JoinDeadLineTitle = styled.h1`
 export const JoinDeadLineTimeText = styled.p`
   margin: 0;
   padding: 0;
-  font-size: 12rem;
+  font-size: 13rem;
   font-weight: 700;
 `;
 
