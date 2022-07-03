@@ -3,13 +3,14 @@ import { NavLink } from "react-router-dom";
 
 import { Button } from "../Button";
 
-export const NavbarContainer = styled.header`
+export const NavbarContainer = styled.header<{ alignMenuCenter: boolean }>`
   width: 100%;
   height: 7rem;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: ${(props) => (props.alignMenuCenter ? "0 3.5rem" : "0")};
 `;
 
 export const LogoWrapper = styled.div`

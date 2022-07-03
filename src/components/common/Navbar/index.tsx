@@ -10,7 +10,7 @@ export interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ alignMenuCenter = false }) => (
-  <S.NavbarContainer>
+  <S.NavbarContainer alignMenuCenter={alignMenuCenter}>
     <S.LogoWrapper>
       <LogoTempSVG />
     </S.LogoWrapper>
