@@ -12,7 +12,7 @@ export const ButtonElement = styled.button<{
   border-radius: 0.7rem;
   font-size: 1.8rem;
   font-weight: 500;
-  letter-spacing: -0.2rem;
+  letter-spacing: -0.01rem;
   padding: 1rem;
   transition: all 200ms;
 
