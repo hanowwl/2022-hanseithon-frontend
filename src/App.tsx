@@ -9,6 +9,7 @@ import {
   RegisterStep3Page,
   HackathonMainPage,
 } from "./pages";
+import { JoinPage } from "./pages/join";
 
 export const App: React.FC = () => (
   <BrowserRouter>
@@ -29,6 +30,7 @@ export const App: React.FC = () => (
       <Route path="hackathon">
         <Route index element={<HackathonMainPage />} />
       </Route>
+      <Route path="join" element={<JoinPage />} />
     </Routes>
   </BrowserRouter>
 );
