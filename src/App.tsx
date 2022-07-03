@@ -7,7 +7,9 @@ import {
   RegisterStep1Page,
   RegisterStep2Page,
   RegisterStep3Page,
+  HackathonMainPage,
 } from "./pages";
+import { JoinPage } from "./pages/join";
 
 export const App: React.FC = () => (
   <BrowserRouter>
@@ -25,6 +27,10 @@ export const App: React.FC = () => (
           element={<Navigate replace to="/auth/login" />}
         />
       </Route>
+      <Route path="hackathon">
+        <Route index element={<HackathonMainPage />} />
+      </Route>
+      <Route path="join" element={<JoinPage />} />
     </Routes>
   </BrowserRouter>
 );
