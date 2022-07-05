@@ -22,9 +22,15 @@ export const ButtonElement = styled.button<{
         return css`
           color: var(--color-text-primary);
           background-color: var(--color-primary);
+          cursor: pointer;
 
           &:hover {
             background-color: var(--color-primary-darker);
+          }
+
+          &:disabled {
+            background-color: var(--color-primary-disabled);
+            cursor: not-allowed;
           }
         `;
 

@@ -4,6 +4,8 @@ export const globalStyles = css`
   :root {
     --color-primary: #4b5fff;
     --color-primary-darker: #3047ff;
+    --color-primary-gray: #959595;
+    --color-primary-disabled: #a4aeff;
     --color-text-primary: white;
     --color-background: #101012;
     --color-foreground: #18181a;
