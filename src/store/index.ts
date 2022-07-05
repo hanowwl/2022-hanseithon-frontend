@@ -7,3 +7,11 @@ export const globalAccessToken = atom({
     state: false,
   },
 });
+
+export const globalUserPrivacyInfo = atom({
+  key: "privacyInfo",
+  default: {
+    phone: "",
+    email: "",
+  },
+});
