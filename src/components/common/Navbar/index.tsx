@@ -1,7 +1,7 @@
 import React from "react";
 
 import LogoTempSVG from "src/assets/svg/logo-temp.svg";
-import { navbarMenu } from "src/constant";
+import { navbarMenu } from "src/constants";
 
 import * as S from "./styled";
 
