@@ -2,6 +2,8 @@ import React, { useCallback, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
+import { AuthLayout, Button } from "src/components";
+
 import * as S from "./styled";
 
 type RegisterStep1Values = {
@@ -12,7 +14,6 @@ type RegisterStep1Values = {
 export const RegisterStep1Page: React.FC = () => {
   const {
     register,
-    handleSubmit,
     reset,
     watch,
     formState: { errors },
@@ -30,10 +31,6 @@ export const RegisterStep1Page: React.FC = () => {
     }
   }, [isAllChecked, reset]);
 
-  const onSubmitHandler = handleSubmit((data: RegisterStep1Values) => {
-    console.log(data);
-  });
-
   useEffect(() => {
     const subscription = watch((value) => {
       if (value.student && value.service && value.privacy)
@@ -44,9 +41,9 @@ export const RegisterStep1Page: React.FC = () => {
   }, [watch]);
 
   return (
-    <div>
-      <form onSubmit={onSubmitHandler}>
-        <div>
+    <AuthLayout title="한세톤 회원가입 / 서비스 이용약관 동의" src="">
+      <S.Step1Form>
+        <S.Step1SelectAllContainer>
           <label htmlFor="isAllChecked">
             <S.CircleCheck checked={isAllChecked} />
             <S.NoneCheckBox
@@ -57,21 +54,9 @@ export const RegisterStep1Page: React.FC = () => {
               }}
             />{" "}
           </label>
-          <span>모두 동의합니다</span>
-        </div>
-        <div>
-          <label htmlFor="student">
-            <S.CircleCheck checked={watch("student")} />
-            <S.NoneCheckBox
-              id="student"
-              type="checkbox"
-              {...register("student")}
-            />{" "}
-          </label>
-          <span>재학생이 맞으신가요?</span>
-        </div>
-        {errors.student?.message}
-        <div>
+          <S.Step1ContentInfo>모두 동의합니다</S.Step1ContentInfo>
+        </S.Step1SelectAllContainer>
+        <S.Step1SelectContainer>
           <label htmlFor="service">
             <S.CircleCheck checked={watch("service")} />
             <S.NoneCheckBox
@@ -82,10 +67,21 @@ export const RegisterStep1Page: React.FC = () => {
               })}
             />{" "}
           </label>
-          <span>서비스 이용약관</span>
-        </div>
+          <S.Step1ContentInfo>서비스 이용약관</S.Step1ContentInfo>
+          <S.Step1ViewAll
+            onClick={() =>
+              window.open(
+                "https://github.com/Hansei-VPN/documents/blob/main/terms-of-service.md",
+                "서비스 이용약관",
+                "width=600, height=800",
+              )
+            }
+          >
+            전체보기
+          </S.Step1ViewAll>
+        </S.Step1SelectContainer>
         {errors.service?.message}
-        <div>
+        <S.Step1SelectContainer>
           <label htmlFor="privacy">
             <S.CircleCheck checked={watch("privacy")} />
             <S.NoneCheckBox
@@ -96,17 +92,41 @@ export const RegisterStep1Page: React.FC = () => {
               })}
             />{" "}
           </label>
-          <span>개인정보 수집 이용 동의</span>
-        </div>
+          <S.Step1ContentInfo>개인정보 수집 이용 동의</S.Step1ContentInfo>
+          <S.Step1ViewAll
+            onClick={() =>
+              window.open(
+                "https://github.com/Hansei-VPN/documents/blob/main/privacy-policy.md",
+                "개인정보처리방침",
+                "width=600, height=800",
+              )
+            }
+          >
+            전체보기
+          </S.Step1ViewAll>
+        </S.Step1SelectContainer>
         {errors.privacy?.message}
-        <button
+        <S.Step1SelectContainer>
+          <label htmlFor="student">
+            <S.CircleCheck checked={watch("student")} />
+            <S.NoneCheckBox
+              id="student"
+              type="checkbox"
+              {...register("student")}
+            />{" "}
+          </label>
+          <S.Step1ContentInfo>재학생이 맞으신가요?</S.Step1ContentInfo>
+        </S.Step1SelectContainer>
+        {errors.student?.message}
+        <Button
           type="submit"
           disabled={!isAllChecked}
           onClick={() => isAllChecked && navigate("/auth/register/step3")}
+          variant="contained"
         >
           다음으로
-        </button>
-      </form>
-    </div>
+        </Button>
+      </S.Step1Form>
+    </AuthLayout>
   );
 };
