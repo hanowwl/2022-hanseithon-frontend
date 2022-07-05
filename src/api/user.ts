@@ -16,6 +16,19 @@ export interface UserProfileResponse {
   networkVerified: boolean;
 }
 
+export type RegisterStep3Values = {
+  username: string;
+  password: string;
+  passwordCheck: string;
+  phone: string;
+  email: string;
+  name: string;
+  studentDepartment: string;
+  studentGrade: number;
+  studentClassroom: number;
+  studentNumber: number;
+};
+
 export const login = async ({
   username,
   password,
@@ -25,6 +38,33 @@ export const login = async ({
   const { data } = await instance.post(API_SUFFIX.LOGIN, {
     username,
     password,
+  });
+  return data;
+};
+
+export const register = async ({
+  username,
+  password,
+  passwordCheck,
+  phone,
+  email,
+  name,
+  studentDepartment,
+  studentGrade,
+  studentClassroom,
+  studentNumber,
+}: RegisterStep3Values) => {
+  const { data } = await instance.post(API_SUFFIX.REGISTER, {
+    username,
+    password,
+    passwordCheck,
+    phone,
+    email,
+    name,
+    studentDepartment,
+    studentGrade,
+    studentClassroom,
+    studentNumber,
   });
   return data;
 };
