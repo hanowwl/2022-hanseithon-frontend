@@ -12,8 +12,9 @@ export const ButtonElement = styled.button<{
   border-radius: 0.7rem;
   font-size: 1.8rem;
   font-weight: 500;
-  letter-spacing: -0.2rem;
+  letter-spacing: -0.01rem;
   padding: 1rem;
+  transition: all 200ms;
 
   ${(props) => {
     switch (props.variant) {
@@ -21,6 +22,10 @@ export const ButtonElement = styled.button<{
         return css`
           color: var(--color-text-primary);
           background-color: var(--color-primary);
+
+          &:hover {
+            background-color: var(--color-primary-darker);
+          }
         `;
 
       case "outlined":
@@ -28,6 +33,11 @@ export const ButtonElement = styled.button<{
           color: var(--color-primary);
           background-color: transparent;
           border: 1px solid var(--color-primary);
+
+          &:hover {
+            color: var(--color-primary-darker);
+            border-color: var(--color-primary-darker);
+          }
         `;
 
       default:

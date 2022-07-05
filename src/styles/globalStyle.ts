@@ -3,10 +3,12 @@ import { css } from "@emotion/react";
 export const globalStyles = css`
   :root {
     --color-primary: #4b5fff;
+    --color-primary-darker: #3047ff;
     --color-text-primary: white;
     --color-background: #101012;
+    --color-foreground: #18181a;
 
-    --modal-background: #18181a;
+    --modal-background: var(--color-foreground);
   }
 
   * {
@@ -24,8 +26,9 @@ export const globalStyles = css`
     font-size: 1.2rem;
     font-weight: 400;
     font-family: "Spoqa Han Sans Neo", sans-serif;
-    letter-spacing: -0.1rem;
+    letter-spacing: -0.01rem;
     color: var(--color-text-primary);
     background-color: var(--color-background);
+    //  overflow-x: hidden;
   }
 `;

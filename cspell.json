@@ -12,7 +12,8 @@
     /* project words */
     "hansei",
     "hanseithon",
-    "spoqa"
+    "spoqa",
+    "hackathon"
   ],
   "flagWords": [],
   "ignorePaths": ["node_modules/**"]
