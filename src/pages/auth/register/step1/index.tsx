@@ -41,7 +41,10 @@ export const RegisterStep1Page: React.FC = () => {
   }, [watch]);
 
   return (
-    <AuthLayout title="한세톤 회원가입 / 서비스 이용약관 동의" src="">
+    <AuthLayout
+      title="한세톤 회원가입 / 서비스 이용약관 동의"
+      src="/auth/login"
+    >
       <S.Step1Form>
         <S.Step1SelectAllContainer>
           <label htmlFor="isAllChecked">
@@ -121,7 +124,7 @@ export const RegisterStep1Page: React.FC = () => {
         <Button
           type="submit"
           disabled={!isAllChecked}
-          onClick={() => isAllChecked && navigate("/auth/register/step3")}
+          onClick={() => isAllChecked && navigate("/auth/register/step2")}
           variant="contained"
         >
           다음으로
