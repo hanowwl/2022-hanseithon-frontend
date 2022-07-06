@@ -18,6 +18,8 @@ import {
   getUserProfile,
   login,
   LoginFormValues,
+  register,
+  RegisterStep3Values,
   UserProfileResponse,
 } from "src/api/user";
 import { globalAccessToken } from "src/store";
@@ -30,6 +32,28 @@ export const useLogin = (): UseMutationResult<
   const navigate = useNavigate();
   const [token, setToken] = useRecoilState(globalAccessToken);
   return useMutation("useLogin", login, {
+    onSuccess: (data: {
+      status: APIResponseStatusType;
+      message: string;
+      result: { accessToken: string; refreshToken: string };
+    }) => {
+      localStorage.setItem("refreshToken", data.result.refreshToken);
+      setToken({ accessToken: data.result.accessToken, state: true });
+      setAccessToken(token.accessToken);
+      navigate("/");
+    },
+    retry: 0,
+  });
+};
+
+export const useRegister = (): UseMutationResult<
+  APIResponse<{ accessToken: string; refreshToken: string }>,
+  APIErrorResponse,
+  RegisterStep3Values
+> => {
+  const navigate = useNavigate();
+  const [token, setToken] = useRecoilState(globalAccessToken);
+  return useMutation("useRegister", register, {
     onSuccess: (data: {
       status: APIResponseStatusType;
       message: string;

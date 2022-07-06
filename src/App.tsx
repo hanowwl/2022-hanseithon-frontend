@@ -8,8 +8,8 @@ import {
   RegisterStep2Page,
   RegisterStep3Page,
   HackathonMainPage,
+  JoinPage,
 } from "./pages";
-import { JoinPage } from "./pages/join";
 
 export const App: React.FC = () => (
   <BrowserRouter>
