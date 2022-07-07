@@ -6,11 +6,17 @@ import * as S from "./styled";
 
 export interface DefaultLayoutProps {
   children: React.ReactNode;
+  conversion?: boolean;
 }
 
-export const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => (
+export const DefaultLayout: React.FC<DefaultLayoutProps> = ({
+  children,
+  conversion,
+}) => (
   <>
     <Navbar alignMenuCenter />
-    <S.DefaultLayoutContainer>{children}</S.DefaultLayoutContainer>
+    <S.DefaultLayoutContainer dimensions={conversion}>
+      {children}
+    </S.DefaultLayoutContainer>
   </>
 );

@@ -38,7 +38,7 @@ export const JoinPage: React.FC = () => {
   };
 
   return (
-    <DefaultLayout>
+    <DefaultLayout conversion={false}>
       <section style={{ marginTop: "10rem", paddingBottom: "20rem" }}>
         <S.TitleContainer>
           <S.JoinDeadLineTitle>
