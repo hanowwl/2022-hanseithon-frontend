@@ -13,7 +13,9 @@
     "hansei",
     "hanseithon",
     "spoqa",
-    "hackathon"
+    "hackathon",
+    "linecap",
+    "linejoin"
   ],
   "flagWords": [],
   "ignorePaths": ["node_modules/**"]
