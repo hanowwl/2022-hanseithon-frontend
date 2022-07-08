@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
-export const DefaultLayoutContainer = styled.div`
+export const DefaultLayoutContainer = styled.div<{ dimensions?: boolean }>`
   width: 100%;
-  max-width: 1220px;
   margin: 0 auto;
+  max-width: ${({ dimensions }) => (dimensions ? "none" : "1220px")};
 `;
