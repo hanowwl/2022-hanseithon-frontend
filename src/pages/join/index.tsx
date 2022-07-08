@@ -10,8 +10,9 @@ export const JoinPage: React.FC = () => {
 
   const handleOnClickCreateTeam = () => {
     addModal({
-      type: "CONFIRM",
+      type: "default",
       props: {
+        type: "CONFIRM",
         title: "팀 생성하기",
         content: <div />,
         button: {
@@ -25,8 +26,9 @@ export const JoinPage: React.FC = () => {
 
   const handleOnClickJoinTeam = () => {
     addModal({
-      type: "ALERT",
+      type: "default",
       props: {
+        type: "ALERT",
         title: "초대키 입력하기",
         content: <div />,
         button: {

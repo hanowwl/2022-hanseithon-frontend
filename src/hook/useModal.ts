@@ -1,21 +1,12 @@
 import { useRecoilState } from "recoil";
 
-import { ModalProps, ModalType } from "src/components";
-import { modalState } from "src/store/modal";
-
-interface AddModalProps {
-  type: ModalType;
-  props: Omit<ModalProps, "type">;
-}
+import { modalState, ModalStateItem } from "src/store/modal";
 
 export const useModal = () => {
   const [modalList, setModalList] = useRecoilState(modalState);
 
-  const addModal = ({ type, props }: AddModalProps) => {
-    setModalList((oldModalList) => [
-      ...oldModalList,
-      { type, props: { type, ...props } },
-    ]);
+  const addModal = ({ type, props }: ModalStateItem) => {
+    setModalList((oldModalList) => [...oldModalList, { type, props }]);
   };
 
   const removeCurrentModal = () => {
