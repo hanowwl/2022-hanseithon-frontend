@@ -42,7 +42,11 @@ export const TeamModal: React.FC<TeamModalProps> = ({
             {closeButton.text}
           </S.TeamModalButton>
         )}
-        <S.TeamModalButton variant="contained" onClick={handleOnSubmit}>
+        <S.TeamModalButton
+          variant="contained"
+          onClick={handleOnSubmit}
+          noCloseButton={!closeButton}
+        >
           {submitButton.text}
         </S.TeamModalButton>
       </S.ModalControlsContainer>

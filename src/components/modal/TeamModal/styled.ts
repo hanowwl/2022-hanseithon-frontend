@@ -66,10 +66,16 @@ export const TeamModalDescription = styled.p`
   margin: 0 0 1.7rem 0;
 `;
 
-export const TeamModalButton = styled(Button)<{ isCloseButton?: boolean }>`
+export const TeamModalButton = styled(Button)<{
+  isCloseButton?: boolean;
+  noCloseButton?: boolean;
+}>`
   font-size: 1.5rem;
   font-weight: 400;
   max-width: 16rem;
+
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
 
   ${(props) =>
     props.isCloseButton &&
@@ -81,5 +87,11 @@ export const TeamModalButton = styled(Button)<{ isCloseButton?: boolean }>`
         color: var(--text-primary);
         background-color: #232326;
       }
+    `}
+
+  ${(props) =>
+    props.noCloseButton &&
+    css`
+      max-width: unset;
     `}
 `;
