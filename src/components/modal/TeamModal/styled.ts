@@ -56,6 +56,7 @@ export const TeamModalTitle = styled.h1`
   font-size: 3.5rem;
   text-align: center;
   margin: 0 0 0.7rem 0;
+  letter-spacing: -0.1rem;
 `;
 
 export const TeamModalDescription = styled.p`
