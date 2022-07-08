@@ -1,3 +1,4 @@
+import { AxiosError } from "axios";
 import {
   useMutation,
   UseMutationResult,
@@ -26,7 +27,7 @@ import { globalAccessToken } from "src/store";
 
 export const useLogin = (): UseMutationResult<
   APIResponse<{ accessToken: string; refreshToken: string }>,
-  APIErrorResponse,
+  AxiosError<APIErrorResponse>,
   LoginFormValues
 > => {
   const navigate = useNavigate();
@@ -48,7 +49,7 @@ export const useLogin = (): UseMutationResult<
 
 export const useRegister = (): UseMutationResult<
   APIResponse<{ accessToken: string; refreshToken: string }>,
-  APIErrorResponse,
+  AxiosError<APIErrorResponse>,
   RegisterStep3Values
 > => {
   const navigate = useNavigate();
@@ -70,7 +71,7 @@ export const useRegister = (): UseMutationResult<
 
 export const useFetchUser = (): UseQueryResult<
   APIResponse<UserProfileResponse>,
-  APIErrorResponse
+  AxiosError<APIErrorResponse>
 > => {
   const [token, setToken] = useRecoilState(globalAccessToken);
   return useQuery(
