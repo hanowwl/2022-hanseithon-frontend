@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
-import { DefaultModalProps } from "src/components";
+import { DefaultModalProps, TeamModalProps } from "src/components";
 import { MODAL_TYPES } from "src/constants";
 
 interface DefaultModalType {
@@ -8,7 +8,12 @@ interface DefaultModalType {
   props: DefaultModalProps;
 }
 
-export type ModalStateItem = DefaultModalType;
+interface TeamModalType {
+  type: typeof MODAL_TYPES.TeamModal;
+  props: TeamModalProps;
+}
+
+export type ModalStateItem = DefaultModalType | TeamModalType;
 
 export const modalState = atom<ModalStateItem[]>({
   key: "modalState",

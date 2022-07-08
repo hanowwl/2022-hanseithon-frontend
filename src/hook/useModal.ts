@@ -6,7 +6,9 @@ export const useModal = () => {
   const [modalList, setModalList] = useRecoilState(modalState);
 
   const addModal = ({ type, props }: ModalStateItem) => {
-    setModalList((oldModalList) => [...oldModalList, { type, props }]);
+    setModalList(
+      (oldModalList) => [...oldModalList, { type, props }] as ModalStateItem[],
+    );
   };
 
   const removeCurrentModal = () => {

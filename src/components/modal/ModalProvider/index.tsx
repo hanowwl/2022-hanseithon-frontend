@@ -1,8 +1,9 @@
+/* eslint-disable no-redeclare */
+/* eslint-disable no-case-declarations */
 import React from "react";
 import { useRecoilState } from "recoil";
 
-import { Portal } from "src/components";
-import { MODAL_TYPE_VALUES } from "src/constants";
+import { Portal, DefaultModal, TeamModal } from "src/components";
 import { modalState } from "src/store/modal";
 
 import * as S from "./styled";
@@ -15,8 +16,15 @@ export const ModalProvider: React.FC = () => {
       {modalList.length > 0 && <S.ModalOverlay />}
       {modalList.map((modal, i) => {
         const { type, props } = modal;
-        const ModalComponent = MODAL_TYPE_VALUES[type];
-        return <ModalComponent key={type + i.toString()} {...props} />;
+
+        switch (type) {
+          case "default":
+            return <DefaultModal key={type + i.toString()} {...props} />;
+          case "team":
+            return <TeamModal key={type + i.toString()} {...props} />;
+          default:
+            return null;
+        }
       })}
     </Portal>
   );

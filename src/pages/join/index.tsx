@@ -10,15 +10,19 @@ export const JoinPage: React.FC = () => {
 
   const handleOnClickCreateTeam = () => {
     addModal({
-      type: "default",
+      type: "team",
       props: {
-        type: "CONFIRM",
+        width: "47rem",
         title: "팀 생성하기",
+        description: "한세톤 참여를 위해 팀 생성을 진행해주세요 !",
         content: <div />,
-        button: {
+        closeButton: {
+          text: "취소하기",
+        },
+        submitButton: {
           text: "생성하기",
         },
-        handleOnConfirm: () => removeCurrentModal(),
+        handleOnSubmit: () => removeCurrentModal(),
         handleOnClose: () => removeCurrentModal(),
       },
     });
