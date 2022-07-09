@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-import { Button, DefaultLayout } from "src/components";
+import { Button, DefaultLayout, ModalInput, ModalSelect } from "src/components";
 import { useModal } from "src/hook";
 
 import * as S from "./styled";
+
+const TeamCreateModalContent: React.FC = () => (
+  <form>
+    <S.TeamModalInputContainer>
+      <ModalInput label="팀 이름" placeholder="2글자 이상/12글자 이하" />
+      <ModalInput label="팀 설명" placeholder="팀 설명을 입력해주세요" />
+      <S.TeamModalSelectContainer>
+        <ModalSelect label="참가 분야">
+          <option value="">분야를 선택해주세요</option>
+          <option value="LIVING">생활</option>
+          <option value="GAME">게임</option>
+        </ModalSelect>
+        <ModalSelect label="팀장 포지션">
+          <option value="">포지션을 선택해주세요</option>
+          <option value="FRONT">프론트엔드</option>
+          <option value="BACK">백엔드</option>
+          <option value="FULL-STACK">풀스택</option>
+        </ModalSelect>
+      </S.TeamModalSelectContainer>
+    </S.TeamModalInputContainer>
+  </form>
+);
 
 export const JoinPage: React.FC = () => {
   const { addModal, removeCurrentModal } = useModal();
@@ -15,14 +37,31 @@ export const JoinPage: React.FC = () => {
         width: "47rem",
         title: "팀 생성하기",
         description: "한세톤 참여를 위해 팀 생성을 진행해주세요 !",
-        content: <div />,
+        content: <TeamCreateModalContent />,
         closeButton: {
           text: "취소하기",
         },
         submitButton: {
           text: "생성하기",
         },
-        handleOnSubmit: () => removeCurrentModal(),
+        handleOnSubmit: () => {
+          removeCurrentModal();
+          addModal({
+            type: "team",
+            props: {
+              width: "47rem",
+              title: "팀 생성 완료!",
+              description: "한세톤에 참여해주셔서 감사해요 :)",
+              content: <div style={{ height: "1.5rem" }} />,
+              submitButton: {
+                text: "이동하기",
+              },
+              handleOnSubmit: () => removeCurrentModal(),
+
+              handleOnClose: () => removeCurrentModal(),
+            },
+          });
+        },
         handleOnClose: () => removeCurrentModal(),
       },
     });
@@ -43,6 +82,9 @@ export const JoinPage: React.FC = () => {
     });
   };
 
+  useEffect(() => {
+    handleOnClickCreateTeam();
+  }, []);
   return (
     <DefaultLayout conversion={false}>
       <section style={{ marginTop: "10rem", paddingBottom: "20rem" }}>
