@@ -7,12 +7,12 @@ export interface ModalSelectProps
   label: string;
 }
 
-export const ModalSelect: React.FC<ModalSelectProps> = ({
-  label,
-  ...props
-}) => (
+export const ModalSelect = React.forwardRef<
+  HTMLSelectElement,
+  ModalSelectProps
+>(({ label, ...props }, ref) => (
   <div>
     <S.ModalInputLabel>{label}</S.ModalInputLabel>
-    <S.StyledSelectField {...props} />
+    <S.StyledSelectField ref={ref} {...props} />
   </div>
-);
+));
