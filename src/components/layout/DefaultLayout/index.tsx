@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Navbar } from "src/components/common";
+import { useFetchUser } from "src/hook/query";
 
 import * as S from "./styled";
 
@@ -12,11 +13,15 @@ export interface DefaultLayoutProps {
 export const DefaultLayout: React.FC<DefaultLayoutProps> = ({
   children,
   conversion,
-}) => (
-  <>
-    <Navbar alignMenuCenter />
-    <S.DefaultLayoutContainer dimensions={conversion}>
-      {children}
-    </S.DefaultLayoutContainer>
-  </>
-);
+}) => {
+  const { data: user, isFetching } = useFetchUser();
+
+  return (
+    <>
+      <Navbar userInfo={user} fetch={isFetching} alignMenuCenter />
+      <S.DefaultLayoutContainer dimensions={conversion}>
+        {children}
+      </S.DefaultLayoutContainer>
+    </>
+  );
+};
