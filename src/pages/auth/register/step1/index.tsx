@@ -12,12 +12,7 @@ type RegisterStep1Values = {
   student: boolean;
 };
 export const RegisterStep1Page: React.FC = () => {
-  const {
-    register,
-    reset,
-    watch,
-    formState: { errors },
-  } = useForm<RegisterStep1Values>();
+  const { register, reset, watch } = useForm<RegisterStep1Values>();
 
   const [isAllChecked, setIsAllChecked] = useState<boolean>(false);
   const navigate = useNavigate();
@@ -83,7 +78,6 @@ export const RegisterStep1Page: React.FC = () => {
             전체보기
           </S.Step1ViewAll>
         </S.Step1SelectContainer>
-        {errors.service?.message}
         <S.Step1SelectContainer>
           <label htmlFor="privacy">
             <S.CircleCheck checked={watch("privacy")} />
@@ -108,7 +102,6 @@ export const RegisterStep1Page: React.FC = () => {
             전체보기
           </S.Step1ViewAll>
         </S.Step1SelectContainer>
-        {errors.privacy?.message}
         <S.Step1SelectContainer>
           <label htmlFor="student">
             <S.CircleCheck checked={watch("student")} />
@@ -120,7 +113,6 @@ export const RegisterStep1Page: React.FC = () => {
           </label>
           <S.Step1ContentInfo>재학생이 맞으신가요?</S.Step1ContentInfo>
         </S.Step1SelectContainer>
-        {errors.student?.message}
         <Button
           type="submit"
           disabled={!isAllChecked}

@@ -3,10 +3,12 @@ import {
   useMutation,
   UseMutationResult,
   useQuery,
+  useQueryClient,
   UseQueryResult,
 } from "react-query";
 import { useNavigate } from "react-router-dom";
-import { useRecoilState } from "recoil";
+import { toast } from "react-toastify";
+import { useRecoilState, useSetRecoilState } from "recoil";
 
 import {
   APIErrorResponse,
@@ -41,10 +43,42 @@ export const useLogin = (): UseMutationResult<
       localStorage.setItem("refreshToken", data.result.refreshToken);
       setToken({ accessToken: data.result.accessToken, state: true });
       setAccessToken(token.accessToken);
+      toast.success("로그인에 성공하셨습니다.", {
+        autoClose: 3000,
+        position: toast.POSITION.BOTTOM_RIGHT,
+        theme: "dark",
+      });
       navigate("/");
+    },
+    onError: (data) => {
+      toast.error(data.response?.data.message, {
+        autoClose: 3000,
+        position: toast.POSITION.BOTTOM_RIGHT,
+        theme: "dark",
+      });
     },
     retry: 0,
   });
+};
+
+export const useLogout = () => {
+  const queryClient = useQueryClient();
+  const setToken = useSetRecoilState(globalAccessToken);
+  const navigate = useNavigate();
+
+  const deleteUserInformation = () => {
+    setToken({ accessToken: "", state: false });
+    localStorage.removeItem("refreshToken");
+    queryClient.removeQueries("useFetchUser");
+    navigate("/auth/login");
+    toast.success("로그아웃에 성공하셨어요!", {
+      autoClose: 3000,
+      position: toast.POSITION.BOTTOM_RIGHT,
+      theme: "dark",
+    });
+  };
+
+  return { deleteUserInformation };
 };
 
 export const useRegister = (): UseMutationResult<
@@ -64,6 +98,13 @@ export const useRegister = (): UseMutationResult<
       setToken({ accessToken: data.result.accessToken, state: true });
       setAccessToken(token.accessToken);
       navigate("/");
+    },
+    onError: (data) => {
+      toast.error(data.response?.data.message, {
+        autoClose: 3000,
+        position: toast.POSITION.BOTTOM_RIGHT,
+        theme: "dark",
+      });
     },
     retry: 0,
   });
@@ -92,7 +133,7 @@ export const useFetchUser = (): UseQueryResult<
         setAccessToken(null);
       },
       retry: 0,
-      staleTime: 3600,
+      staleTime: 36000,
     },
   );
 };

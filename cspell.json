@@ -15,7 +15,8 @@
     "spoqa",
     "hackathon",
     "linecap",
-    "linejoin"
+    "linejoin",
+    "toastify"
   ],
   "flagWords": [],
   "ignorePaths": ["node_modules/**"]
