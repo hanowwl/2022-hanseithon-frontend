@@ -1,41 +1,119 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Button, DefaultLayout } from "src/components";
-import { useModal } from "src/hook";
+import { useModal, useUrlQuery } from "src/hook";
+import { useFetchUser } from "src/hook/query";
 
+import { CreateTeamModalContent, JoinTeamModalContent } from "./modal";
 import * as S from "./styled";
 
 export const JoinPage: React.FC = () => {
+  const query = useUrlQuery();
+  const navigate = useNavigate();
   const { addModal, removeCurrentModal } = useModal();
+  const { data: user, isSuccess } = useFetchUser();
+  const createModalFormRef = useRef<HTMLFormElement>(null);
+  const joinModalFormRef = useRef<HTMLFormElement>(null);
+  const [inviteCode, setInviteCode] = useState(query.get("invite") || "");
 
-  const handleOnClickCreateTeam = () => {
+  const addRequireLoginModal = () => {
     addModal({
-      type: "CONFIRM",
+      type: "default",
       props: {
-        title: "팀 생성하기",
-        content: <div />,
+        type: "ALERT",
+        title: "로그인이 필요한 작업이에요",
+        content: "",
         button: {
-          text: "생성하기",
+          text: "로그인하러 가기",
+        },
+        handleOnConfirm: () => {
+          removeCurrentModal();
+          navigate("/auth/login");
+        },
+      },
+    });
+  };
+
+  const handleOnClickShowTeamInfo = () =>
+    addModal({
+      type: "default",
+      props: {
+        type: "ALERT",
+        title: `${user?.result.team.name} 팀의 초대코드에요`,
+        content: <h2>join/{user?.result.team.inviteCode}</h2>,
+        button: {
+          text: "닫기",
         },
         handleOnConfirm: () => removeCurrentModal(),
+      },
+    });
+
+  const handleOnClickCreateTeam = () => {
+    if (!user?.result) return addRequireLoginModal();
+    if (user?.result.team !== null) return handleOnClickShowTeamInfo();
+
+    return addModal({
+      type: "team",
+      props: {
+        width: "47rem",
+        title: "팀 생성하기",
+        description: "한세톤 참여를 위해 팀 생성을 진행해주세요 !",
+        content: <CreateTeamModalContent ref={createModalFormRef} />,
+        closeButton: {
+          text: "취소하기",
+        },
+        submitButton: {
+          text: "생성하기",
+        },
+        handleOnSubmit: () => {
+          createModalFormRef.current?.dispatchEvent(
+            new Event("submit", { cancelable: true, bubbles: true }),
+          );
+        },
         handleOnClose: () => removeCurrentModal(),
       },
     });
   };
 
   const handleOnClickJoinTeam = () => {
-    addModal({
-      type: "ALERT",
+    if (!user?.result) return addRequireLoginModal();
+    if (user?.result.team !== null) return handleOnClickShowTeamInfo();
+
+    return addModal({
+      type: "team",
       props: {
-        title: "초대키 입력하기",
-        content: <div />,
-        button: {
+        width: "47rem",
+        title: "팀 참가하기",
+        description: "한세톤 참여를 위해 팀 참가를 진행해주세요 !",
+        content: (
+          <JoinTeamModalContent
+            ref={joinModalFormRef}
+            inviteCode={inviteCode}
+          />
+        ),
+        closeButton: {
+          text: "취소하기",
+        },
+        submitButton: {
           text: "참가하기",
         },
-        handleOnConfirm: () => removeCurrentModal(),
+        handleOnSubmit: () => {
+          joinModalFormRef.current?.dispatchEvent(
+            new Event("submit", { cancelable: true, bubbles: true }),
+          );
+        },
+        handleOnClose: () => {
+          removeCurrentModal();
+          if (inviteCode) setInviteCode("");
+        },
       },
     });
   };
+
+  useEffect(() => {
+    if (user && inviteCode) handleOnClickJoinTeam();
+  }, [isSuccess]);
 
   return (
     <DefaultLayout conversion={false}>
@@ -69,12 +147,21 @@ export const JoinPage: React.FC = () => {
             </S.HanseithonDateText>
           </S.HanseithonJoinContainer>
           <S.ButtonContainer>
-            <Button variant="contained" onClick={handleOnClickCreateTeam}>
-              팀 생성하기
+            <Button
+              variant="contained"
+              onClick={
+                user?.result.team !== null
+                  ? handleOnClickShowTeamInfo
+                  : handleOnClickCreateTeam
+              }
+            >
+              {user?.result.team !== null ? "초대코드 확인하기" : "팀 생성하기"}
             </Button>
-            <Button variant="outlined" onClick={handleOnClickJoinTeam}>
-              팀 참가하기
-            </Button>
+            {user?.result.team === null && (
+              <Button variant="outlined" onClick={handleOnClickJoinTeam}>
+                팀 참가하기
+              </Button>
+            )}
           </S.ButtonContainer>
         </S.JoinPageSectionContentContainer>
       </section>

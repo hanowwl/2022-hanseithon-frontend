@@ -6,6 +6,8 @@ export const API_SUFFIX = {
   PROFILE: "/users/profile",
   REFRESH: "/auth/refresh",
   REGISTER: "/auth/register",
+  TEAM: "/teams",
+  JOIN_TEAM: "/teams/join",
 };
 
 export const instance = axios.create({

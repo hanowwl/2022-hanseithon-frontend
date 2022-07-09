@@ -30,7 +30,9 @@ export const App: React.FC = () => (
       <Route path="hackathon">
         <Route index element={<HackathonMainPage />} />
       </Route>
-      <Route path="join" element={<JoinPage />} />
+      <Route path="join">
+        <Route index element={<JoinPage />} />
+      </Route>
     </Routes>
   </BrowserRouter>
 );

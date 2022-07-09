@@ -1,11 +1,19 @@
 import { atom } from "recoil";
 
-import { ModalProps, ModalType } from "src/components";
+import { DefaultModalProps, TeamModalProps } from "src/components";
+import { MODAL_TYPES } from "src/constants";
 
-export interface ModalStateItem {
-  type: ModalType;
-  props: ModalProps;
+interface DefaultModalType {
+  type: typeof MODAL_TYPES.DefaultModal;
+  props: DefaultModalProps;
 }
+
+interface TeamModalType {
+  type: typeof MODAL_TYPES.TeamModal;
+  props: TeamModalProps;
+}
+
+export type ModalStateItem = DefaultModalType | TeamModalType;
 
 export const modalState = atom<ModalStateItem[]>({
   key: "modalState",

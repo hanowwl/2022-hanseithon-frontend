@@ -73,3 +73,33 @@ export const ButtonContainer = styled.div`
     margin-bottom: 1.5rem;
   }
 `;
+
+export const TeamModalInputContainer = styled.div`
+  margin-bottom: 3.6rem;
+
+  & > div:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+
+  & > div > div:not(:last-child) {
+    margin-bottom: 0.7rem;
+  }
+
+  & > div > p {
+    margin: 0;
+  }
+`;
+
+export const TeamModalSelectContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  & > div {
+    width: 100%;
+  }
+
+  & > div:not(:last-child) {
+    margin-right: 2rem;
+  }
+`;
