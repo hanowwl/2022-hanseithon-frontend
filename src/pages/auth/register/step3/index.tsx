@@ -1,10 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 
 import { RegisterStep3Values } from "src/api/user";
 import ImportantSVG from "src/assets/svg/important.svg";
-import { AuthLabelTextField, AuthLayout, Button } from "src/components";
+import {
+  AuthLabelTextField,
+  AuthLayout,
+  Button,
+  ErrorMessage,
+} from "src/components";
 import { SCHOOL } from "src/constants";
 import { useRegister } from "src/hook/query";
 import { globalUserPrivacyInfo } from "src/store";
@@ -20,9 +25,16 @@ const {
 } = SCHOOL;
 
 export const RegisterStep3Page: React.FC = () => {
-  const { register, handleSubmit, watch } = useForm<RegisterStep3Values>();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<RegisterStep3Values>();
   const { phone, email } = useRecoilValue(globalUserPrivacyInfo);
   const [departments, setDepartments] = useState<string[]>([]);
+  const [isAllValuesEntered, setIsAllValuesEntered] = useState<boolean>(false);
+
   const [classRoom, setClassRoom] = useState<number[]>([]);
   const { mutate } = useRegister();
 
@@ -50,6 +62,9 @@ export const RegisterStep3Page: React.FC = () => {
     });
   };
 
+  const password = useRef({});
+  password.current = watch("password", "");
+
   useEffect(() => {
     const subscription = watch((value) => {
       if (value.studentGrade === 1) {
@@ -69,7 +84,24 @@ export const RegisterStep3Page: React.FC = () => {
         }
       }
     });
+    return () => subscription.unsubscribe();
+  }, [watch]);
 
+  useEffect(() => {
+    const subscription = watch((value) => {
+      if (
+        value.username &&
+        value.password &&
+        value.passwordCheck &&
+        value.name &&
+        value.studentClassroom &&
+        value.studentDepartment &&
+        value.studentGrade &&
+        value.studentNumber
+      )
+        return setIsAllValuesEntered(true);
+      return setIsAllValuesEntered(false);
+    });
     return () => subscription.unsubscribe();
   }, [watch]);
 
@@ -82,36 +114,59 @@ export const RegisterStep3Page: React.FC = () => {
           type="text"
           placeholder="아이디를 입력해주세요."
           {...register("username", {
-            required: "필수 응답 항목입니다.",
+            required: "아이디를 입력해주세요.",
+            pattern: {
+              value: /^[a-z0-9$@$!%*#?&]{4,20}$/,
+              message: "아이디 형식이 잘못되었습니다.",
+            },
           })}
         />
+        <ErrorMessage error={errors.username?.message} />
         <AuthLabelTextField
           importance
           className="비밀번호"
           type="password"
           placeholder="비밀번호를 입력해주세요."
           {...register("password", {
-            required: "필수 응답 항목입니다.",
+            required: "비밀번호를 입력해주세요.",
+            pattern: {
+              value: /^(?=.*[a-z])(?=.*\d)[a-z\d]{8,20}$/,
+              message: "비밀번호 형식이 잘못되었습니다.",
+            },
           })}
         />
+        <ErrorMessage error={errors.password?.message} />
         <AuthLabelTextField
           importance
           className="비밀번호 확인"
           type="password"
           placeholder="비밀번호를 다시 한번 확인해주세요."
           {...register("passwordCheck", {
-            required: "필수 응답 항목입니다.",
+            required: "비밀번호를 입력해주세요.",
+            pattern: {
+              value: /^(?=.*[a-z])(?=.*\d)[a-z\d]{8,20}$/,
+              message: "비밀번호 형식이 잘못되었습니다.",
+            },
+            validate: (value) =>
+              value === password.current ||
+              "입력한 비밀번호와 일치하지 않습니다.",
           })}
         />
+        <ErrorMessage error={errors.passwordCheck?.message} />
         <AuthLabelTextField
           importance
           className="이름"
           type="text"
           placeholder="이름을 입력해주세요."
           {...register("name", {
-            required: "필수 응답 항목입니다.",
+            required: "이름을 입력해주세요.",
+            pattern: {
+              value: /^[가-힣]{2,4}$/,
+              message: "이름이 형식이 잘못되었습니다.",
+            },
           })}
         />
+        <ErrorMessage error={errors.name?.message} />
         <S.Step3SelectWrapper>
           <span>
             학과/학년/반/번호 <ImportantSVG />
@@ -162,7 +217,11 @@ export const RegisterStep3Page: React.FC = () => {
             </S.Step3Select>
           </S.Step3SelectContainer>
         </S.Step3SelectWrapper>
-        <Button type="submit" variant="contained">
+        <Button
+          disabled={!isAllValuesEntered}
+          type="submit"
+          variant="contained"
+        >
           완료
         </Button>
       </S.Step3Form>
