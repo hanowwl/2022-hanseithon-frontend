@@ -80,6 +80,14 @@ export const TeamModalInputContainer = styled.div`
   & > div:not(:last-child) {
     margin-bottom: 2rem;
   }
+
+  & > div > div:not(:last-child) {
+    margin-bottom: 0.7rem;
+  }
+
+  & > div > p {
+    margin: 0;
+  }
 `;
 
 export const TeamModalSelectContainer = styled.div`
