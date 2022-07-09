@@ -6,7 +6,7 @@ export interface CreateTeamFormValues {
   position: string;
 }
 
-export interface JoinTeamForValues {
+export interface JoinTeamFormValues {
   position: string;
 }
 
@@ -54,7 +54,7 @@ export const createTeam = async ({
 
 export const joinTeam = async (
   inviteCode: string,
-  { position }: JoinTeamForValues,
+  { position }: JoinTeamFormValues,
 ) => {
   const { data } = await instance.post<APIResponse<Team>>(
     `${API_SUFFIX.JOIN_TEAM}/${inviteCode}`,
