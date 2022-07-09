@@ -1,19 +1,21 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Button, DefaultLayout } from "src/components";
-import { useModal } from "src/hook";
+import { useModal, useUrlQuery } from "src/hook";
 import { useFetchUser } from "src/hook/query";
 
 import { CreateTeamModalContent, JoinTeamModalContent } from "./modal";
 import * as S from "./styled";
 
 export const JoinPage: React.FC = () => {
+  const query = useUrlQuery();
   const navigate = useNavigate();
   const { addModal, removeCurrentModal } = useModal();
-  const { data: user } = useFetchUser();
+  const { data: user, isSuccess } = useFetchUser();
   const createModalFormRef = useRef<HTMLFormElement>(null);
   const joinModalFormRef = useRef<HTMLFormElement>(null);
+  const [inviteCode, setInviteCode] = useState(query.get("invite") || "");
 
   const addRequireLoginModal = () => {
     addModal({
@@ -84,7 +86,12 @@ export const JoinPage: React.FC = () => {
         width: "47rem",
         title: "팀 참가하기",
         description: "한세톤 참여를 위해 팀 참가를 진행해주세요 !",
-        content: <JoinTeamModalContent ref={joinModalFormRef} />,
+        content: (
+          <JoinTeamModalContent
+            ref={joinModalFormRef}
+            inviteCode={inviteCode}
+          />
+        ),
         closeButton: {
           text: "취소하기",
         },
@@ -96,10 +103,17 @@ export const JoinPage: React.FC = () => {
             new Event("submit", { cancelable: true, bubbles: true }),
           );
         },
-        handleOnClose: () => removeCurrentModal(),
+        handleOnClose: () => {
+          removeCurrentModal();
+          if (inviteCode) setInviteCode("");
+        },
       },
     });
   };
+
+  useEffect(() => {
+    if (user && inviteCode) handleOnClickJoinTeam();
+  }, [isSuccess]);
 
   return (
     <DefaultLayout conversion={false}>
