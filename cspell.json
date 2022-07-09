@@ -16,7 +16,8 @@
     "hackathon",
     "linecap",
     "linejoin",
-    "toastify"
+    "toastify",
+    "Csvg"
   ],
   "flagWords": [],
   "ignorePaths": ["node_modules/**"]
