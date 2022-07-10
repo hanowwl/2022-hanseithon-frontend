@@ -82,22 +82,14 @@ export const useLogout = () => {
 };
 
 export const useRegister = (): UseMutationResult<
-  APIResponse<{ accessToken: string; refreshToken: string }>,
+  APIResponse<{}>,
   AxiosError<APIErrorResponse>,
   RegisterStep3Values
 > => {
   const navigate = useNavigate();
-  const [token, setToken] = useRecoilState(globalAccessToken);
   return useMutation("useRegister", register, {
-    onSuccess: (data: {
-      status: APIResponseStatusType;
-      message: string;
-      result: { accessToken: string; refreshToken: string };
-    }) => {
-      localStorage.setItem("refreshToken", data.result.refreshToken);
-      setToken({ accessToken: data.result.accessToken, state: true });
-      setAccessToken(token.accessToken);
-      navigate("/");
+    onSuccess: () => {
+      navigate("/auth/login");
       toast.success("회원가입에 성공하셨어요!", {
         autoClose: 3000,
         position: toast.POSITION.BOTTOM_RIGHT,
