@@ -6,7 +6,6 @@ import CircleCheckSVG from "src/assets/svg/circle-check.svg";
 export const Step1Form = styled.form`
   display: flex;
   flex-direction: column;
-
   & > button {
     margin-top: 3rem;
   }

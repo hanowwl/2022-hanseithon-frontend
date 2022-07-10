@@ -11,6 +11,7 @@ export const globalStyles = css`
     --color-foreground: #18181a;
 
     --modal-background: var(--color-foreground);
+    --card-container-background: var(--color-foreground);
     --modal-inputs-background: var(--color-background);
     --modal-inputs-placeholder: #aeaeae;
 
