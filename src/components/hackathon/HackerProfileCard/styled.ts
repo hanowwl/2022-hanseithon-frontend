@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
 
 export const HackerProfileCardContainer = styled.div`
-  width: 24rem;
+  width: max-content;
   height: 7rem;
   display: flex;
   align-items: center;
   padding: 0.8rem 1rem;
+  padding-right: 5rem;
   border-radius: 1rem;
   background-color: var(--color-foreground);
 
