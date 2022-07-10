@@ -7,6 +7,8 @@ export const HackathonMainPageContainer = styled.div`
   width: 100%;
   max-width: 770px;
   margin: 0 auto;
+  padding: 1rem;
+  padding-bottom: 7rem;
 `;
 
 export const HackathonMainPageBannerImage = styled.img`
