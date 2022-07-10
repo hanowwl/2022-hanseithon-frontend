@@ -116,8 +116,8 @@ export const RegisterStep3Page: React.FC = () => {
           {...register("username", {
             required: "아이디를 입력해주세요.",
             pattern: {
-              value: /^[a-z0-9$@$!%*#?&]{4,20}$/,
-              message: "아이디 형식이 잘못되었습니다.",
+              value: /^[a-z0-9$@$!%*#?&]{4,16}$/,
+              message: "4~16자 영문, 숫자, 특수문자를 입력해주세요",
             },
           })}
         />
@@ -130,8 +130,9 @@ export const RegisterStep3Page: React.FC = () => {
           {...register("password", {
             required: "비밀번호를 입력해주세요.",
             pattern: {
-              value: /^(?=.*[a-z])(?=.*\d)[a-z\d]{8,20}$/,
-              message: "비밀번호 형식이 잘못되었습니다.",
+              value:
+                /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,16}$/,
+              message: "8~16자 영문, 숫자, 특수문자 조합을 입력해주세요",
             },
           })}
         />
@@ -144,8 +145,9 @@ export const RegisterStep3Page: React.FC = () => {
           {...register("passwordCheck", {
             required: "비밀번호를 입력해주세요.",
             pattern: {
-              value: /^(?=.*[a-z])(?=.*\d)[a-z\d]{8,20}$/,
-              message: "비밀번호 형식이 잘못되었습니다.",
+              value:
+                /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,16}$/,
+              message: "8~16자 영문, 숫자, 특수문자 조합을 입력해주세요",
             },
             validate: (value) =>
               value === password.current ||
@@ -162,7 +164,7 @@ export const RegisterStep3Page: React.FC = () => {
             required: "이름을 입력해주세요.",
             pattern: {
               value: /^[가-힣]{2,4}$/,
-              message: "이름이 형식이 잘못되었습니다.",
+              message: "2~4자, 한글로 이루어진 이름을 입력해주세요",
             },
           })}
         />
