@@ -1,4 +1,5 @@
 import { APIResponse, API_SUFFIX, instance, setAccessToken } from ".";
+import { Team } from "./team";
 
 export interface LoginFormValues {
   username: string;
@@ -14,6 +15,7 @@ export interface UserProfileResponse {
   studentClassroom: number;
   studentNumber: number;
   networkVerified: boolean;
+  team: Omit<Team, "member"> & { owner: string };
 }
 
 export type RegisterStep3Values = {

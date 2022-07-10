@@ -1,12 +1,12 @@
 import React from "react";
 
-import { Button, ButtonVariantType } from "../Button";
+import { Button, ButtonVariantType } from "../../common/Button";
 import * as S from "./styled";
 
-export type ModalType = "ALERT" | "CONFIRM";
+export type DefaultModalType = "ALERT" | "CONFIRM";
 
-export interface ModalProps {
-  type: ModalType;
+export interface DefaultModalProps {
+  type: DefaultModalType;
   title: string;
   content: React.ReactNode;
   button: {
@@ -18,7 +18,7 @@ export interface ModalProps {
   width?: string | number;
 }
 
-export const Modal: React.FC<ModalProps> = ({
+export const DefaultModal: React.FC<DefaultModalProps> = ({
   type,
   width,
   title,
