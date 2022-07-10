@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
 
+import { Device } from "src/constants";
+
 export const ModalWrapper = styled.div`
   display: block;
   position: fixed;
@@ -25,6 +27,14 @@ export const ModalContainer = styled.div<{ width?: string | number }>`
   border-radius: 0.7rem;
   background-color: var(--modal-background);
   animation: modal_fade_in 300ms;
+
+  @media ${Device.tabletS} {
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    max-width: none;
+    padding: 2.5rem;
+  }
 
   @keyframes modal_fade_in {
     from {
