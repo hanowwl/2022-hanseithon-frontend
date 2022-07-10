@@ -98,6 +98,11 @@ export const useRegister = (): UseMutationResult<
       setToken({ accessToken: data.result.accessToken, state: true });
       setAccessToken(token.accessToken);
       navigate("/");
+      toast.success("회원가입에 성공하셨어요!", {
+        autoClose: 3000,
+        position: toast.POSITION.BOTTOM_RIGHT,
+        theme: "dark",
+      });
     },
     onError: (data) => {
       toast.error(data.response?.data.message, {
