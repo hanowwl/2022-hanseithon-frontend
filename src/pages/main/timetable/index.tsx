@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import * as S from "./styled";
 
 export const TimeTable: React.FC = () => {
-  const [timeTableStatus, settimeTableStatus] = useState<boolean>(true);
+  const [timeTableStatus, setTimeTableStatus] = useState<boolean>(true);
 
   return (
     <S.TimeTableWrapper>
@@ -13,13 +13,13 @@ export const TimeTable: React.FC = () => {
       <S.TimeTableSituation>
         <S.TimeTableSituationButton
           status={timeTableStatus}
-          onClick={() => settimeTableStatus(true)}
+          onClick={() => setTimeTableStatus(true)}
         >
           7월 20일 (수)
         </S.TimeTableSituationButton>
         <S.TimeTableSituationButton
           status={!timeTableStatus}
-          onClick={() => settimeTableStatus(false)}
+          onClick={() => setTimeTableStatus(false)}
         >
           7월 21일 (목)
         </S.TimeTableSituationButton>
