@@ -1,6 +1,6 @@
 import React from "react";
 
-import { TeamCategroy } from "src/constants";
+import { TeamCategory } from "src/constants";
 
 import * as S from "./styled";
 
@@ -22,7 +22,7 @@ export const HackerProfileCard: React.FC<HackerProfileCardProps> = ({
     <S.HackerProfileContainer>
       <S.HackerNameText>{name}</S.HackerNameText>
       <S.HackerInfoContainer>
-        <S.HackerInfoText>{TeamCategroy[position]}</S.HackerInfoText>
+        <S.HackerInfoText>{TeamCategory[position]}</S.HackerInfoText>
         <S.HackerInfoText>@{studentDepartment}</S.HackerInfoText>
       </S.HackerInfoContainer>
     </S.HackerProfileContainer>
