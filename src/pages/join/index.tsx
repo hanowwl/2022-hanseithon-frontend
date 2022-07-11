@@ -1,7 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Button, DefaultLayout } from "src/components";
+import { JoinDeadLineTimeText, Button, DefaultLayout } from "src/components";
 import { useModal, useUrlQuery } from "src/hook";
 import { useFetchUser } from "src/hook/query";
 
@@ -112,7 +113,8 @@ export const JoinPage: React.FC = () => {
   };
 
   useEffect(() => {
-    if (user && inviteCode) handleOnClickJoinTeam();
+    if (user && inviteCode) return handleOnClickJoinTeam();
+    return undefined;
   }, [isSuccess]);
 
   return (
@@ -122,7 +124,9 @@ export const JoinPage: React.FC = () => {
           <S.JoinDeadLineTitle>
             by the <strong>TEAM BUILD</strong> deadline
           </S.JoinDeadLineTitle>
-          <S.JoinDeadLineTimeText>30:00:00</S.JoinDeadLineTimeText>
+          <S.JoinDeadLineTimeText>
+            <JoinDeadLineTimeText />
+          </S.JoinDeadLineTimeText>
         </S.TitleContainer>
         <S.JoinPageSectionContentContainer>
           <S.HanseithonJoinContainer>
@@ -150,18 +154,18 @@ export const JoinPage: React.FC = () => {
             <Button
               variant="contained"
               onClick={
-                user?.result.team !== null
+                user?.result.team
                   ? handleOnClickShowTeamInfo
                   : handleOnClickCreateTeam
               }
             >
-              {user?.result.team !== null ? "초대코드 확인하기" : "팀 생성하기"}
+              {user?.result.team ? "초대코드 확인하기" : "팀 생성하기"}
             </Button>
-            {user?.result.team === null && (
-              <Button variant="outlined" onClick={handleOnClickJoinTeam}>
-                팀 참가하기
-              </Button>
-            )}
+            {/* {!user?.result.team && ( */}
+            <Button variant="outlined" onClick={handleOnClickJoinTeam}>
+              팀 참가하기
+            </Button>
+            {/* )} */}
           </S.ButtonContainer>
         </S.JoinPageSectionContentContainer>
       </section>

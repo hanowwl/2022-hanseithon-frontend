@@ -2,7 +2,7 @@
 import React from "react";
 
 import { AllUserProfileResponse } from "src/api/user";
-import { TeamCategroy } from "src/constants";
+import { TeamCategory } from "src/constants";
 
 import * as S from "./styled";
 
@@ -28,7 +28,7 @@ export const TeamActivityLog: React.FC<AllUserProfileResponse> = ({
       </S.TeamActivityLogInfoText>
 
       <S.TeamActivityLogInfoText>
-        {TeamCategroy[user.position]} @{user.studentDepartment}
+        {TeamCategory[user.position]} @{user.studentDepartment}
       </S.TeamActivityLogInfoText>
     </S.TeamActivityLogInfoContainer>
   </S.TeamActivityLogContainer>

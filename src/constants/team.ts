@@ -14,14 +14,14 @@ export const TEAM_TYPE_VALUES = {
 
 export type TEAM_TYPE = typeof TEAM_TYPE_VALUES[keyof typeof TEAM_TYPE_VALUES];
 
-export type TeamCategroyType = {
+export type TeamCategoryType = {
   [key: string]: string | undefined;
 };
 
-export const TeamCategroy: TeamCategroyType = {
+export const TeamCategory: TeamCategoryType = {
   DEVELOPER: "개발자",
   DESIGN: "디자이너",
-  PRODUTMANGER: "PM",
+  PM: "기획자",
 } as const;
 
 export type TeamPartType = {
