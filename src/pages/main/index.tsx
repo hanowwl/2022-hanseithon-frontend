@@ -1,10 +1,8 @@
 import React from "react";
 
-// import LandingPoster from "src/assets/png/hackathon-landing-poster.png";
 import { DefaultLayout } from "src/components";
 import { useModal } from "src/hook";
 
-import { Competition } from "./competition";
 import * as S from "./styled";
 import { TimeTable } from "./timetable";
 
@@ -26,23 +24,6 @@ export const MainPage: React.FC = () => {
         width: "53rem",
       },
     });
-
-  const addCompetitionModal = () => {
-    addModal({
-      type: "default",
-      props: {
-        type: "ALERT",
-        title: "심사기준",
-        content: <Competition />,
-        button: {
-          text: "닫기",
-          variant: "outlined",
-        },
-        handleOnConfirm: () => removeCurrentModal(),
-        width: "53rem",
-      },
-    });
-  };
 
   return (
     <DefaultLayout conversion>
@@ -84,9 +65,7 @@ export const MainPage: React.FC = () => {
                   <S.HanseithonCompetitionInfo>
                     심사 기준표 {">"}
                   </S.HanseithonCompetitionInfo>
-                  <S.HanseithonCompetitionInfoButton
-                    onClick={addCompetitionModal}
-                  >
+                  <S.HanseithonCompetitionInfoButton>
                     확인하기
                   </S.HanseithonCompetitionInfoButton>
                 </S.HackathonMainPageButtonWrapper>
