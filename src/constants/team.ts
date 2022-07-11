@@ -21,7 +21,7 @@ export type TeamCategoryType = {
 export const TeamCategory: TeamCategoryType = {
   DEVELOPER: "개발자",
   DESIGN: "디자이너",
-  PRODUTMANGER: "PM",
+  PM: "기획자",
 } as const;
 
 export type TeamPartType = {
