@@ -1,18 +1,20 @@
 import React from "react";
 
+import { TeamCategroy } from "src/constants";
+
 import * as S from "./styled";
 
 export interface HackerProfileCardProps {
   name: string;
   position: string;
-  department: string;
+  studentDepartment: string;
   profileImage?: string;
 }
 
 export const HackerProfileCard: React.FC<HackerProfileCardProps> = ({
   name,
   position,
-  department,
+  studentDepartment,
   profileImage,
 }) => (
   <S.HackerProfileCardContainer>
@@ -20,8 +22,8 @@ export const HackerProfileCard: React.FC<HackerProfileCardProps> = ({
     <S.HackerProfileContainer>
       <S.HackerNameText>{name}</S.HackerNameText>
       <S.HackerInfoContainer>
-        <S.HackerInfoText>{position}</S.HackerInfoText>
-        <S.HackerInfoText>{department}</S.HackerInfoText>
+        <S.HackerInfoText>{TeamCategroy[position]}</S.HackerInfoText>
+        <S.HackerInfoText>@{studentDepartment}</S.HackerInfoText>
       </S.HackerInfoContainer>
     </S.HackerProfileContainer>
   </S.HackerProfileCardContainer>
