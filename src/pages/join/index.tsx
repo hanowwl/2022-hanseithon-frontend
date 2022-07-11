@@ -155,7 +155,7 @@ export const JoinPage: React.FC = () => {
                   : handleOnClickShowTeamInfo
               }
             >
-              {user?.result.team ? "팀 생성하기" : "초대코드 확인하기"}
+              {user?.result.team ? "초대코드 확인하기" : "팀 생성하기"}
             </Button>
             {!user?.result.team && (
               <Button variant="outlined" onClick={handleOnClickJoinTeam}>
