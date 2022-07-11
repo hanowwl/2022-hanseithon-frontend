@@ -31,6 +31,27 @@ export type RegisterStep3Values = {
   studentNumber: number;
 };
 
+export type UserNameResponse = {
+  name: string;
+};
+
+export type AllUserProfileResponse = {
+  team: {
+    name: string;
+    type: "GAME" | "LIVING";
+    owner: { name: string };
+    createdAt: string;
+    description: string;
+    members: UserNameResponse[];
+  };
+  user: {
+    name: string;
+    position: string;
+    studentDepartment: string;
+    profileImage?: string;
+  };
+};
+
 export const login = async ({
   username,
   password,
@@ -75,6 +96,13 @@ export const getUserProfile = async (): Promise<
   APIResponse<UserProfileResponse>
 > => {
   const { data } = await instance.get(API_SUFFIX.PROFILE);
+  return data;
+};
+
+export const getAllUserProfile = async (): Promise<
+  APIResponse<AllUserProfileResponse[]>
+> => {
+  const { data } = await instance.get(API_SUFFIX.USERS);
   return data;
 };
 
