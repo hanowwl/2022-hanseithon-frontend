@@ -2,6 +2,8 @@ import { css } from "@emotion/react";
 
 export const globalStyles = css`
   :root {
+    color-scheme: dark;
+
     --color-primary: #4b5fff;
     --color-primary-darker: #3047ff;
     --color-primary-gray: #959595;
