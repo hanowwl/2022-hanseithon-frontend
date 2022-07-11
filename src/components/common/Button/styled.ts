@@ -15,7 +15,7 @@ export const ButtonElement = styled.button<{
   letter-spacing: -0.01rem;
   padding: 1rem;
   transition: all 200ms;
-
+  cursor: pointer;
   ${(props) => {
     switch (props.variant) {
       case "contained":
