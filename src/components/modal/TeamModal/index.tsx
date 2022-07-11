@@ -6,14 +6,14 @@ export interface TeamModalProps {
   title: string;
   description: string;
   content: React.ReactNode;
-  submitButton: {
+  submitButton?: {
     text: string;
   };
   closeButton?: {
     text: string;
   };
   width?: string | number;
-  handleOnSubmit: () => void;
+  handleOnSubmit?: () => void;
   handleOnClose?: () => void;
 }
 
@@ -47,7 +47,7 @@ export const TeamModal: React.FC<TeamModalProps> = ({
           onClick={handleOnSubmit}
           noCloseButton={!closeButton}
         >
-          {submitButton.text}
+          {submitButton?.text}
         </S.TeamModalButton>
       </S.ModalControlsContainer>
     </S.ModalContainer>
