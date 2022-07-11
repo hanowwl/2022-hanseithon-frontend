@@ -1,7 +1,5 @@
 import styled from "@emotion/styled";
 
-import { Device } from "src/constants";
-
 export const TitleContainer = styled.div`
   width: 100%;
   text-align: center;
@@ -30,23 +28,10 @@ export const JoinDeadLineTimeText = styled.p`
   padding: 0;
   font-size: 13rem;
   font-weight: 700;
-
-  @media ${Device.tabletL} {
-    font-size: 10rem;
-  }
-
-  @media ${Device.tabletS} {
-    font-size: 6rem;
-  }
 `;
 
 export const JoinPageSectionContentContainer = styled.div`
   display: flex;
-
-  @media ${Device.tabletL} {
-    flex-direction: column;
-    padding: 0.5rem;
-  }
 `;
 
 export const HanseithonJoinContainer = styled.div``;
@@ -86,12 +71,6 @@ export const ButtonContainer = styled.div`
 
   & > button:not(:last-child) {
     margin-bottom: 1.5rem;
-  }
-
-  @media ${Device.tabletL} {
-    font-size: 0rem;
-    padding-left: 0rem;
-    margin-top: 5rem;
   }
 `;
 

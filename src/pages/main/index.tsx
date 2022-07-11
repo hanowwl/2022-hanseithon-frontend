@@ -55,9 +55,10 @@ export const MainPage: React.FC = () => {
                 한세톤:O에 참가하여 개발을 통해 여러분의 꿈을 세상에 보여주세요.
               </S.HackathonMainPageDescriptionText>
               <S.HanseithonDateText>
-                <strong>참가 신청</strong> : 7월 11일 15시부터
+                <strong>참가 신청</strong> : 7월 11일 00시 - 7월 13일 23시 59분
                 <br />
-                <strong>참가 신청 마감</strong> : 7월 14일 00시까지
+                <strong>참가 신청 마감</strong> : 7월 11일 00시 - 7월 13일 23시
+                59분
               </S.HanseithonDateText>
               <S.HackathonMainPageButtonContainer>
                 <S.HackathonMainPageButtonWrapper>
