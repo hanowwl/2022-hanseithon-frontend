@@ -44,9 +44,9 @@ export const MainPage: React.FC = () => {
               </S.HackathonMainPageBannerText>
               <S.HackathonMainPageDescriptionText>
                 안녕하세요, 한세사이버보안고등학교 학생회 주관 ‘한세톤 : O’의
-                신청 페이지입니다.
+                웹사이트입니다.
                 <br />
-                한세톤의 참가부터 운영까지 모든 것이 이 페이지에서 이루어질
+                한세톤의 참가부터 운영까지 모든 것이 이 웹사이트에서 이루어질
                 예정입니다.
                 <br />
                 개발에 정답은 없습니다. 이곳에서 팀원과 함께 자신이 원하는 대로
