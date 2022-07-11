@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { JoinDeadLineTimeText, Button, DefaultLayout } from "src/components";
@@ -17,6 +17,7 @@ export const JoinPage: React.FC = () => {
   const createModalFormRef = useRef<HTMLFormElement>(null);
   const joinModalFormRef = useRef<HTMLFormElement>(null);
   const [inviteCode, setInviteCode] = useState(query.get("invite") || "");
+  const isUserHasTeam = useMemo(() => user?.result.team, [user]);
 
   const addRequireLoginModal = () => {
     addModal({
@@ -152,18 +153,18 @@ export const JoinPage: React.FC = () => {
             <Button
               variant="contained"
               onClick={
-                user?.result.team
+                isUserHasTeam
                   ? handleOnClickShowTeamInfo
                   : handleOnClickCreateTeam
               }
             >
-              {user?.result.team ? "초대코드 확인하기" : "팀 생성하기"}
+              {isUserHasTeam ? "초대코드 확인하기" : "팀 생성하기"}
             </Button>
-            {/* {!user?.result.team && ( */}
-            <Button variant="outlined" onClick={handleOnClickJoinTeam}>
-              팀 참가하기
-            </Button>
-            {/* )} */}
+            {!isUserHasTeam && (
+              <Button variant="outlined" onClick={handleOnClickJoinTeam}>
+                팀 참가하기
+              </Button>
+            )}
           </S.ButtonContainer>
         </S.JoinPageSectionContentContainer>
       </section>
