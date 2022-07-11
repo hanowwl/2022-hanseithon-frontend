@@ -2,7 +2,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { JoinDeadLineTimeText, Button, DefaultLayout } from "src/components";
+import {
+  JoinDeadLineTimeText,
+  Button,
+  DefaultLayout,
+  NetworkValidationModal,
+} from "src/components";
 import { useModal, useUrlQuery } from "src/hook";
 import { useFetchUser } from "src/hook/query";
 
@@ -52,6 +57,9 @@ export const JoinPage: React.FC = () => {
 
   const handleOnClickCreateTeam = () => {
     if (!user?.result) return addRequireLoginModal();
+    if (!user?.result.networkVerified && isSuccess)
+      return NetworkValidationModal({ addModal, removeCurrentModal });
+
     if (user?.result.team !== null) return handleOnClickShowTeamInfo();
 
     return addModal({
@@ -79,6 +87,9 @@ export const JoinPage: React.FC = () => {
 
   const handleOnClickJoinTeam = () => {
     if (!user?.result) return addRequireLoginModal();
+    if (!user?.result.networkVerified && isSuccess)
+      return NetworkValidationModal({ addModal, removeCurrentModal });
+
     if (user?.result.team !== null) return handleOnClickShowTeamInfo();
 
     return addModal({
