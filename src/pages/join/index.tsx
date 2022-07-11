@@ -2,10 +2,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { TimeResponse } from "src/api";
-import { Button, DefaultLayout } from "src/components";
+import { JoinDeadLineTimeText, Button, DefaultLayout } from "src/components";
 import { useModal, useUrlQuery } from "src/hook";
-import { useFetchServerTime, useFetchUser } from "src/hook/query";
+import { useFetchUser } from "src/hook/query";
 
 import { CreateTeamModalContent, JoinTeamModalContent } from "./modal";
 import * as S from "./styled";
@@ -15,11 +14,9 @@ export const JoinPage: React.FC = () => {
   const navigate = useNavigate();
   const { addModal, removeCurrentModal } = useModal();
   const { data: user, isSuccess } = useFetchUser();
-  const { data: fetchTime } = useFetchServerTime();
   const createModalFormRef = useRef<HTMLFormElement>(null);
   const joinModalFormRef = useRef<HTMLFormElement>(null);
   const [inviteCode, setInviteCode] = useState(query.get("invite") || "");
-  const timeZeroFill = (times: number) => `00${times}`.slice(-2);
 
   const addRequireLoginModal = () => {
     addModal({
@@ -115,50 +112,8 @@ export const JoinPage: React.FC = () => {
     });
   };
 
-  const getDateDiff = (today: Date, date: Date) => {
-    const diff = new Date(date.getTime() - today.getTime());
-    return {
-      year: diff.getUTCFullYear() - 1970,
-      month: diff.getUTCMonth(),
-      day: diff.getUTCDate() - 1,
-      hour: diff.getUTCHours(),
-      minute: diff.getUTCMinutes(),
-      second: diff.getUTCSeconds(),
-    };
-  };
-
-  const ToDay = new Date();
-
-  const todayDate = new Date(
-    fetchTime?.result.year as number,
-    fetchTime?.result.month as number,
-    fetchTime?.result.day as number,
-    fetchTime?.result.hour as number,
-    fetchTime?.result.minute as number,
-    fetchTime?.result.second as number,
-  );
-
-  const tomorrowDate = new Date(2022, 7, 14, 0, 0, 0);
-
-  const [time, setTime] = useState<TimeResponse>({
-    year: 0,
-    month: 0,
-    day: 0,
-    hour: 0,
-    minute: 0,
-    second: 0,
-  });
-
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTime(getDateDiff(ToDay, time.year === -1 ? todayDate : tomorrowDate));
-    }, 1000);
-    return () => clearInterval(timer);
-  }, [time]);
-
-  useEffect(() => {
-    if (!user?.result) return addRequireLoginModal;
-    if (user && inviteCode) handleOnClickJoinTeam();
+    if (user && inviteCode) return handleOnClickJoinTeam();
     return undefined;
   }, [isSuccess]);
 
@@ -170,8 +125,7 @@ export const JoinPage: React.FC = () => {
             by the <strong>TEAM BUILD</strong> deadline
           </S.JoinDeadLineTitle>
           <S.JoinDeadLineTimeText>
-            {timeZeroFill(time.day)}:{timeZeroFill(time.hour)}:
-            {timeZeroFill(time.minute)}:{timeZeroFill(time.second)}
+            <JoinDeadLineTimeText />
           </S.JoinDeadLineTimeText>
         </S.TitleContainer>
         <S.JoinPageSectionContentContainer>
@@ -207,11 +161,11 @@ export const JoinPage: React.FC = () => {
             >
               {user?.result.team ? "초대코드 확인하기" : "팀 생성하기"}
             </Button>
-            {!user?.result.team && (
-              <Button variant="outlined" onClick={handleOnClickJoinTeam}>
-                팀 참가하기
-              </Button>
-            )}
+            {/* {!user?.result.team && ( */}
+            <Button variant="outlined" onClick={handleOnClickJoinTeam}>
+              팀 참가하기
+            </Button>
+            {/* )} */}
           </S.ButtonContainer>
         </S.JoinPageSectionContentContainer>
       </section>
