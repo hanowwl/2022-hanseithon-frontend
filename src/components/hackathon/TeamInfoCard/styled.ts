@@ -17,6 +17,7 @@ export const TeamInfoCardContainer = styled.div`
 
   @media (max-width: 700px) {
     width: 100%;
+    padding-right: 0rem;
   } ;
 `;
 

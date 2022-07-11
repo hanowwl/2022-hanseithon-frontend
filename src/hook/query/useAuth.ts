@@ -17,6 +17,8 @@ import {
   setAccessToken,
 } from "src/api";
 import {
+  AllUserProfileResponse,
+  getAllUserProfile,
   getRefreshTokenAuth,
   getUserProfile,
   login,
@@ -134,3 +136,17 @@ export const useFetchUser = (): UseQueryResult<
     },
   );
 };
+
+export const useFetchAllUser = (): UseQueryResult<
+  APIResponse<AllUserProfileResponse[]>,
+  AxiosError<APIErrorResponse>
+> =>
+  useQuery(
+    "useFetchAllUser",
+    () => getAllUserProfile(),
+
+    {
+      retry: 0,
+      staleTime: 36000,
+    },
+  );

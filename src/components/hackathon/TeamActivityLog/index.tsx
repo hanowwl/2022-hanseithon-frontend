@@ -1,46 +1,34 @@
-/* eslint-disable react/no-unused-prop-types */
+/* eslint-disable no-shadow */
 import React from "react";
 
-import { TeamInfoCardProps } from "../TeamInfoCard";
+import { AllUserProfileResponse } from "src/api/user";
+import { TeamCategory } from "src/constants";
+
 import * as S from "./styled";
 
-export type TeamActionType = "produce" | "submission" | string;
-
-export interface TeamActivityLogProps {
-  name: string;
-  position: string;
-  department: string;
-  action: TeamActionType;
-  profileImage?: string;
-  team?: TeamInfoCardProps;
-}
-
-export const TeamActivityLog: React.FC<TeamActivityLogProps> = ({
-  name,
-  position,
-  department,
-  action,
+export const TeamActivityLog: React.FC<AllUserProfileResponse> = ({
+  user,
   team,
-  profileImage,
 }) => (
   <S.TeamActivityLogContainer>
-    <S.TeamActivityLogProfileImage src={profileImage} alt="" />
+    <S.TeamActivityLogProfileImage src={user.profileImage} alt="" />
     <S.TeamActivityLogInfoContainer>
       <S.TeamActivityLogInfoText>
-        {action === "produce" ? (
+        {user?.name === team?.owner.name ? (
           <span>
-            <strong>{name}</strong>님이 팀 <marker>{team?.name}</marker>를
+            <strong>{user.name}</strong>님이 팀 <marker>{team?.name}</marker>를
             생성하셨습니다.
           </span>
         ) : (
           <span>
-            <strong>{name}</strong>님이 팀 <marker>{team?.name}</marker>의
-            파일을 제출하셨습니다.
+            <strong>{user.name}</strong>님이 팀 <marker>{team?.name}</marker>를
+            참가하셨습니다.
           </span>
         )}
       </S.TeamActivityLogInfoText>
+
       <S.TeamActivityLogInfoText>
-        {position} {department}
+        {TeamCategory[user.position]} @{user.studentDepartment}
       </S.TeamActivityLogInfoText>
     </S.TeamActivityLogInfoContainer>
   </S.TeamActivityLogContainer>

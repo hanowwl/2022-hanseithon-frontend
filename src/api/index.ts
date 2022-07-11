@@ -3,11 +3,13 @@ import axios from "axios";
 export const API_SUFFIX = {
   BASEURL: "/api",
   LOGIN: "/auth/login",
+  USERS: "/users",
   PROFILE: "/users/profile",
   REFRESH: "/auth/refresh",
   REGISTER: "/auth/register",
   TEAM: "/teams",
   JOIN_TEAM: "/teams/join",
+  TIME: "/time",
 };
 
 export const instance = axios.create({
@@ -38,4 +40,18 @@ export const setAccessToken = (token: string | null) => {
   } else {
     delete instance.defaults.headers.common.Authorization;
   }
+};
+
+export interface TimeResponse {
+  year: number;
+  month: number;
+  day: number;
+  hour: number;
+  minute: number;
+  second: number;
+}
+
+export const getServerTime = async (): Promise<APIResponse<TimeResponse>> => {
+  const { data } = await instance.get(API_SUFFIX.TIME);
+  return data;
 };
