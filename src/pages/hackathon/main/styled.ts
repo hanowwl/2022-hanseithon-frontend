@@ -13,7 +13,7 @@ export const HackathonMainPageContainer = styled.div`
 
 export const HackathonMainPageBannerImage = styled.img`
   width: 100%;
-  height: 32rem;
+  height: 100%;
   margin-top: 3.5rem;
   margin-bottom: 4.5rem;
   border-radius: 1rem;
@@ -40,6 +40,17 @@ export const HackerProfileCardsListWrapper = styled.div`
   flex: 1;
   display: flex;
   overflow: auto;
+  ::-webkit-scrollbar {
+    height: 3px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: black;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: var(--color-primary-gray);
+    border-radius: 10px;
+  }
 `;
 
 export const HackerProfileCardsListContainer = styled.div`
