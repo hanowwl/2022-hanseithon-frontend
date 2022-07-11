@@ -151,8 +151,8 @@ export const JoinPage: React.FC = () => {
               variant="contained"
               onClick={
                 user?.result.team
-                  ? handleOnClickCreateTeam
-                  : handleOnClickShowTeamInfo
+                  ? handleOnClickShowTeamInfo
+                  : handleOnClickCreateTeam
               }
             >
               {user?.result.team ? "초대코드 확인하기" : "팀 생성하기"}
