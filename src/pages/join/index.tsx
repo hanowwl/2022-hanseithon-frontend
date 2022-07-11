@@ -132,22 +132,18 @@ export const JoinPage: React.FC = () => {
           <S.HanseithonJoinContainer>
             <S.HanseithonTitleText>hanseithon : o</S.HanseithonTitleText>
             <S.HanseithonDescriptionText>
-              안녕하세요, 한세사이버보안고등학교 학생회 주관 ‘한세톤 : O’의 신청
-              페이지입니다.
+              2022년 제 5회 한세톤이 다시 <strong>오프라인</strong>으로
+              돌아왔습니다. 한세톤 참가
               <br />
-              한세톤의 참가부터 운영까지 모든 것이 이 페이지에서 이루어질
-              예정입니다.
-              <br />
-              개발에 정답은 없습니다. 이곳에서 팀원과 함께 자신이 원하는 대로
-              길을 개척해나가세요.
-              <br />
-              한세톤:O에 참가하여 개발을 통해 여러분의 꿈을 세상에 보여주세요.
+              신청 방법은 팀장이 팀 생성을 진행하시면 됩니다. <br />
+              팀명은 0자로 제한되며 부적절한 팀명은 자제해주시면 감사하겠습니다.
+              또한 <br /> 팀원들은 팀장이 팀 생성 시 제공되는 참가코드를
+              입력하여 참가해주시면 됩니다.
             </S.HanseithonDescriptionText>
             <S.HanseithonDateText>
-              <strong>참가 신청</strong> : 7월 11일 00시 - 7월 15일 23시 59분
+              <strong>참가 신청</strong> : 7월 11일 15시부터
               <br />
-              <strong>참가 신청 마감</strong> : 7월 11일 00시 - 7월 15일 23시
-              59분
+              <strong>참가 신청 마감</strong> : 7월 14일 00시까지
             </S.HanseithonDateText>
           </S.HanseithonJoinContainer>
           <S.ButtonContainer>
