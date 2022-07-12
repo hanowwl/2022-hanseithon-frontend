@@ -17,7 +17,9 @@
     "linecap",
     "linejoin",
     "toastify",
-    "Csvg"
+    "Csvg",
+    "hsoc",
+    "senwifi로"
   ],
   "flagWords": [],
   "ignorePaths": ["node_modules/**"]
