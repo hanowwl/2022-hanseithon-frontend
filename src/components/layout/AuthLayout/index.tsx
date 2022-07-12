@@ -8,7 +8,7 @@ import * as S from "./styled";
 
 export interface AuthLayoutProps {
   title: string;
-  src: string;
+  src?: string;
   children: React.ReactNode;
 }
 
@@ -20,9 +20,11 @@ export const AuthLayout: React.FC<AuthLayoutProps> = ({
   const indentTitle = title.split("/");
   return (
     <S.AuthLayoutContainer>
-      <Link to={src}>
-        <ArrowRightSVG />
-      </Link>
+      {src && (
+        <Link to={src}>
+          <ArrowRightSVG />
+        </Link>
+      )}
       <div style={{ marginTop: "2rem" }}>
         {indentTitle ? (
           indentTitle.map((title) => <h1>{title}</h1>)
