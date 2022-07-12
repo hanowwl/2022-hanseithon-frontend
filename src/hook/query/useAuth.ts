@@ -158,9 +158,13 @@ export const useAuthenticateInternalNetwork = ({
 }: {
   onSuccess?: (data: APIResponse<"">) => void;
   onError?: (error: AxiosError<APIErrorResponse>) => void;
-}): UseQueryResult<APIResponse<"">, AxiosError<APIErrorResponse>> =>
-  useQuery("useAuthenticateInternalNetwork", () => checkIsInternalNetwork(), {
-    retry: 0,
-    onSuccess,
-    onError,
-  });
+}): UseMutationResult<APIResponse<"">, AxiosError<APIErrorResponse>> =>
+  useMutation(
+    "useAuthenticateInternalNetwork",
+    () => checkIsInternalNetwork(),
+    {
+      retry: 0,
+      onSuccess,
+      onError,
+    },
+  );
