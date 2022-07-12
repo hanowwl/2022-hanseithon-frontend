@@ -14,6 +14,7 @@ import {
   APIErrorResponse,
   APIResponse,
   APIResponseStatusType,
+  checkIsInternalNetwork,
   setAccessToken,
 } from "src/api";
 import {
@@ -150,3 +151,16 @@ export const useFetchAllUser = (): UseQueryResult<
       staleTime: 36000,
     },
   );
+
+export const useAuthenticateInternalNetwork = ({
+  onSuccess,
+  onError,
+}: {
+  onSuccess?: (data: APIResponse<"">) => void;
+  onError?: (error: AxiosError<APIErrorResponse>) => void;
+}): UseQueryResult<APIResponse<"">, AxiosError<APIErrorResponse>> =>
+  useQuery("useAuthenticateInternalNetwork", () => checkIsInternalNetwork(), {
+    retry: 0,
+    onSuccess,
+    onError,
+  });

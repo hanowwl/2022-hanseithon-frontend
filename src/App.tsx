@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable consistent-return */
 import React, { useEffect } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
@@ -13,6 +14,7 @@ import {
   RegisterStep3Page,
   HackathonMainPage,
   JoinPage,
+  InternalPage,
 } from "./pages";
 
 export const App: React.FC = () => {
@@ -20,6 +22,7 @@ export const App: React.FC = () => {
   const { addModal, removeCurrentModal } = useModal();
 
   useEffect(() => {
+    if (window.location.pathname === "/internal") return;
     if (!user?.result.networkVerified && isSuccess)
       return NetworkValidationModal({ addModal, removeCurrentModal });
     return undefined;
@@ -46,6 +49,9 @@ export const App: React.FC = () => {
         </Route>
         <Route path="join">
           <Route index element={<JoinPage />} />
+        </Route>
+        <Route path="internal">
+          <Route index element={<InternalPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
