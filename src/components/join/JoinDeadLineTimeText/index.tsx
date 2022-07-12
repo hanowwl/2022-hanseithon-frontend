@@ -31,7 +31,7 @@ export const JoinDeadLineTimeText = () => {
     fetchTime?.result.second as number,
   );
 
-  const tomorrowDate = new Date(2022, 7, 14, 0, 0, 0);
+  const tomorrowDate = new Date(2022, 7, 15, 0, 0, 0);
 
   const [time, setTime] = useState<TimeResponse>({
     year: 0,
