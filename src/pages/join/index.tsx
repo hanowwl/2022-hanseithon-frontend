@@ -3,6 +3,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { useNavigate } from "react-router-dom";
 
+import { instance } from "src/api";
 import {
   JoinDeadLineTimeText,
   Button,
@@ -62,9 +63,16 @@ export const JoinPage: React.FC = () => {
     });
 
   const handleOnClickCreateTeam = () => {
+    const accessToken =
+      instance.defaults.headers.common.Authorization.toString().split(" ")[1];
+
     if (!user?.result) return addRequireLoginModal();
     if (!user?.result.networkVerified && isSuccess)
-      return NetworkValidationModal({ addModal, removeCurrentModal });
+      return NetworkValidationModal({
+        addModal,
+        removeCurrentModal,
+        accessToken,
+      });
 
     if (user?.result.team !== null) return handleOnClickShowTeamInfo();
 
@@ -92,9 +100,16 @@ export const JoinPage: React.FC = () => {
   };
 
   const handleOnClickJoinTeam = () => {
+    const accessToken =
+      instance.defaults.headers.common.Authorization.toString().split(" ")[1];
+
     if (!user?.result) return addRequireLoginModal();
     if (!user?.result.networkVerified && isSuccess)
-      return NetworkValidationModal({ addModal, removeCurrentModal });
+      return NetworkValidationModal({
+        addModal,
+        removeCurrentModal,
+        accessToken,
+      });
 
     if (user?.result.team !== null) return handleOnClickShowTeamInfo();
 

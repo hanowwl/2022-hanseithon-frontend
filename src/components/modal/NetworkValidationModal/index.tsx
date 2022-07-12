@@ -3,11 +3,13 @@ import { ModalStateItem } from "src/store/modal";
 interface NetworkValidationModalProps {
   addModal: ({ type, props }: ModalStateItem) => void;
   removeCurrentModal: () => void;
+  accessToken: string;
 }
 
 export const NetworkValidationModal = ({
   addModal,
   removeCurrentModal,
+  accessToken,
 }: NetworkValidationModalProps) =>
   addModal({
     type: "team",
@@ -25,7 +27,7 @@ export const NetworkValidationModal = ({
       },
       handleOnSubmit: () => {
         window.open(
-          "http://172.16.255.100/internal",
+          `http://172.16.255.100/internal?token=${accessToken}`,
           "_blank",
           "width=400, height=500",
         );

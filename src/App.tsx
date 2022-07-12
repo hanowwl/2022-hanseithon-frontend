@@ -3,6 +3,7 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
+import { instance } from "./api";
 import { NetworkValidationModal } from "./components/modal/NetworkValidationModal";
 import { useModal } from "./hook";
 import { useFetchUser } from "./hook/query";
@@ -22,9 +23,16 @@ export const App: React.FC = () => {
   const { addModal, removeCurrentModal } = useModal();
 
   useEffect(() => {
+    const accessToken =
+      instance.defaults.headers.common.Authorization.toString().split(" ")[1];
+
     if (window.location.pathname === "/internal") return;
     if (!user?.result.networkVerified && isSuccess)
-      return NetworkValidationModal({ addModal, removeCurrentModal });
+      return NetworkValidationModal({
+        addModal,
+        removeCurrentModal,
+        accessToken,
+      });
     return undefined;
   }, [isSuccess]);
 

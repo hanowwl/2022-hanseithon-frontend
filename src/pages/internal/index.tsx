@@ -1,18 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { toast } from "react-toastify";
 
+import { instance } from "src/api";
 import { AuthLayout, Button } from "src/components";
+import { useUrlQuery } from "src/hook";
 import { useAuthenticateInternalNetwork } from "src/hook/query";
 
 export const InternalPage: React.FC = () => {
-  const { isError } = useAuthenticateInternalNetwork({
+  const query = useUrlQuery();
+
+  const { mutate, isError } = useAuthenticateInternalNetwork({
     onSuccess: () => {
-      window.close();
-      toast.success("교내망 인증에 성공했어요😊", {
-        autoClose: 3000,
-        position: toast.POSITION.BOTTOM_RIGHT,
-        theme: "dark",
-      });
+      toast.success(
+        <>
+          교내망 인증에 성공했어요 😊
+          <br />
+          5초 뒤에 창이 닫혀요
+        </>,
+        {
+          autoClose: 3000,
+          position: toast.POSITION.BOTTOM_RIGHT,
+          theme: "dark",
+        },
+      );
+      setTimeout(() => {
+        window.close();
+      }, 5000);
     },
     onError: () => {
       toast.error("교내망 인증에 실패했어요😞", {
@@ -22,6 +35,31 @@ export const InternalPage: React.FC = () => {
       });
     },
   });
+
+  useEffect(() => {
+    const token = query.get("token");
+    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+
+    if (!token) {
+      toast.error(
+        <>
+          인증 정보를 찾을 수 없어요 😞
+          <br />
+          5초 뒤에 창이 닫혀요
+        </>,
+        {
+          autoClose: 3000,
+          position: toast.POSITION.BOTTOM_RIGHT,
+          theme: "dark",
+        },
+      );
+      setTimeout(() => {
+        window.close();
+      }, 5000);
+    }
+
+    mutate("");
+  }, []);
 
   return (
     <AuthLayout title="교내망 인증하기">
