@@ -142,4 +142,6 @@ export const HanseithonCompetitionInfoButton = styled.button`
   background-color: #ffffff;
   color: #18181a;
   cursor: pointer;
+  color: black;
+  border: none;
 `;

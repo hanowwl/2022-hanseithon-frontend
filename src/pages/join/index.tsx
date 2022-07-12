@@ -2,7 +2,12 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { JoinDeadLineTimeText, Button, DefaultLayout } from "src/components";
+import {
+  JoinDeadLineTimeText,
+  Button,
+  DefaultLayout,
+  NetworkValidationModal,
+} from "src/components";
 import { useModal, useUrlQuery } from "src/hook";
 import { useFetchUser } from "src/hook/query";
 
@@ -53,6 +58,9 @@ export const JoinPage: React.FC = () => {
 
   const handleOnClickCreateTeam = () => {
     if (!user?.result) return addRequireLoginModal();
+    if (!user?.result.networkVerified && isSuccess)
+      return NetworkValidationModal({ addModal, removeCurrentModal });
+
     if (user?.result.team !== null) return handleOnClickShowTeamInfo();
 
     return addModal({
@@ -80,6 +88,9 @@ export const JoinPage: React.FC = () => {
 
   const handleOnClickJoinTeam = () => {
     if (!user?.result) return addRequireLoginModal();
+    if (!user?.result.networkVerified && isSuccess)
+      return NetworkValidationModal({ addModal, removeCurrentModal });
+
     if (user?.result.team !== null) return handleOnClickShowTeamInfo();
 
     return addModal({
@@ -145,10 +156,9 @@ export const JoinPage: React.FC = () => {
               참가해주시면 됩니다.
             </S.HanseithonDescriptionText>
             <S.HanseithonDateText>
-              <strong>참가 신청</strong> : 7월 11일 00시 - 7월 14일 23시 59분
+              <strong>참가 신청</strong> : 7월 11일 15시부터
               <br />
-              <strong>참가 신청 마감</strong> : 7월 11일 00시 - 7월 14일 23시
-              59분
+              <strong>참가 신청 마감</strong> : 7월 14일 00시까지 59분
             </S.HanseithonDateText>
           </S.HanseithonJoinContainer>
           <S.ButtonContainer>
