@@ -59,6 +59,7 @@ export const HackathonMainPageBackground = styled.div`
   width: 100%;
   height: 100vh;
   user-select: none;
+  margin-top: 12rem;
   @media ${Device.tabletL} {
     display: flex;
     justify-content: center;
@@ -88,7 +89,7 @@ export const HackathonMainPageTextWrapper = styled.div`
 export const HackathonMainPageBannerText = styled.div`
   font-size: 5.5rem;
   font-weight: 600;
-  font-family: "Spectral SC", serif;
+  font-family: "Spectral SC", sans-serif;
   letter-spacing: -0.1rem;
   @media ${Device.tabletL} {
     font-size: 2.9rem;
