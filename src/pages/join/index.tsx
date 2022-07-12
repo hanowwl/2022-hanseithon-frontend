@@ -25,7 +25,7 @@ export const JoinPage: React.FC = () => {
   const [inviteCode, setInviteCode] = useState(query.get("invite") || "");
   const isUserHasTeam = useMemo(() => user?.result.team, [user]);
 
-  const isMoblie = useMediaQuery({
+  const isMobile = useMediaQuery({
     query: "(max-width:425px)",
   });
 
@@ -148,7 +148,7 @@ export const JoinPage: React.FC = () => {
         <S.JoinPageSectionContentContainer>
           <S.HanseithonJoinContainer>
             <S.HanseithonTitleText>hanseithon : o</S.HanseithonTitleText>
-            {isMoblie ? (
+            {isMobile ? (
               <S.HanseithonDescriptionText>
                 2022년 제 5회 한세톤이 다시 <strong>오프라인</strong>
                 으로 돌아왔습니다.
