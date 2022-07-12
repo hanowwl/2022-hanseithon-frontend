@@ -57,8 +57,8 @@ export const getServerTime = async (): Promise<APIResponse<TimeResponse>> => {
 };
 
 export const checkIsInternalNetwork = async (): Promise<APIResponse<{}>> => {
-  const { data } = await axios.post(
-    "http://172.16.255.100/api/auth/internal-network",
+  const { data } = await instance.post(
+    "http://172.16.255.100/api/auth/internal-auth",
   );
   return data;
 };
