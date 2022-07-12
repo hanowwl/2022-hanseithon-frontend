@@ -18,6 +18,15 @@ export const TitleContainer = styled.div`
   }
 `;
 
+export const JoinPageWrapper = styled.section`
+  margin-top: 10rem;
+  padding-bottom: 20rem;
+
+  @media ${Device.tabletL} {
+    padding-bottom: 12rem;
+  }
+`;
+
 export const JoinDeadLineTitle = styled.h1`
   margin: 0 0 -1.5rem 0;
   padding: 0;
@@ -30,6 +39,10 @@ export const JoinDeadLineTitle = styled.h1`
     font-weight: 800;
     font-family: "Spectral SC", sans-serif;
   }
+
+  @media ${Device.tabletL} {
+    font-size: 1.8rem;
+  }
 `;
 
 export const JoinDeadLineTimeText = styled.p`
@@ -37,6 +50,10 @@ export const JoinDeadLineTimeText = styled.p`
   padding: 0;
   font-size: 13rem;
   font-weight: 700;
+  @media ${Device.tabletL} {
+    margin-top: 1rem;
+    font-size: 5.5rem;
+  }
 `;
 
 export const JoinPageSectionContentContainer = styled.div`
@@ -56,6 +73,10 @@ export const HanseithonTitleText = styled.p`
   font-size: 4.6rem;
   font-weight: 300;
   font-family: "Spectral SC", sans-serif;
+
+  @media ${Device.tabletL} {
+    font-size: 4rem;
+  }
 `;
 
 export const HanseithonDescriptionText = styled.div`
@@ -63,11 +84,22 @@ export const HanseithonDescriptionText = styled.div`
   font-weight: 300;
   line-height: 3.8rem;
   margin-bottom: 5rem;
+
+  @media ${Device.tabletL} {
+    font-size: 1.4rem;
+    line-height: 2rem;
+  }
 `;
 
 export const HanseithonDateText = styled.p`
   font-size: 1.5rem;
   line-height: 3rem;
+
+  @media ${Device.tabletL} {
+    font-size: 1.3rem;
+    line-height: 2.3rem;
+    margin-bottom: -0.5rem;
+  }
 `;
 
 export const ButtonContainer = styled.div`
