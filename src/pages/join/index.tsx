@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -23,6 +24,10 @@ export const JoinPage: React.FC = () => {
   const joinModalFormRef = useRef<HTMLFormElement>(null);
   const [inviteCode, setInviteCode] = useState(query.get("invite") || "");
   const isUserHasTeam = useMemo(() => user?.result.team, [user]);
+
+  const isMoblie = useMediaQuery({
+    query: "(max-width:425px)",
+  });
 
   const addRequireLoginModal = () => {
     addModal({
@@ -143,22 +148,40 @@ export const JoinPage: React.FC = () => {
         <S.JoinPageSectionContentContainer>
           <S.HanseithonJoinContainer>
             <S.HanseithonTitleText>hanseithon : o</S.HanseithonTitleText>
-            <S.HanseithonDescriptionText>
-              2022년 제 5회 한세톤이 다시 <strong>오프라인</strong>으로
-              돌아왔습니다.
-              <br />
-              한세톤 참가 신청 방법은 팀장이 팀 생성을 진행하시면 됩니다.
-              <br />
-              팀명은 14자로 제한되며 부적절한 팀명은 자제해주시면
-              감사하겠습니다.
-              <br />
-              또한 팀원들은 팀장이 팀 생성 시 제공되는 참가코드를 입력하여
-              참가해주시면 됩니다.
-            </S.HanseithonDescriptionText>
+            {isMoblie ? (
+              <S.HanseithonDescriptionText>
+                2022년 제 5회 한세톤이 다시 <strong>오프라인</strong>
+                으로 돌아왔습니다.
+                <br />
+                한세톤 참가 신청 방법은 팀장이 팀 생성을 진행하시면 <br />
+                됩니다.
+                <br />
+                팀명은 14자로 제한되며 부적절한 팀명은 자제해주시면
+                <br />
+                감사하겠습니다.
+                <br />
+                또한 팀원들은 팀장이 팀 생성 시 제공되는 참가코드를 <br />
+                입력하여 참가해주시면 됩니다.
+              </S.HanseithonDescriptionText>
+            ) : (
+              <S.HanseithonDescriptionText>
+                2022년 제 5회 한세톤이 다시 <strong>오프라인</strong>으로
+                돌아왔습니다.
+                <br />
+                한세톤 참가 신청 방법은 팀장이 팀 생성을 진행하시면 됩니다.
+                <br />
+                팀명은 14자로 제한되며 부적절한 팀명은 자제해주시면
+                감사하겠습니다.
+                <br />
+                또한 팀원들은 팀장이 팀 생성 시 제공되는 참가코드를 입력하여
+                참가해주시면 됩니다.
+              </S.HanseithonDescriptionText>
+            )}
+
             <S.HanseithonDateText>
               <strong>참가 신청</strong> : 7월 11일 15시부터
               <br />
-              <strong>참가 신청 마감</strong> : 7월 14일 00시까지 59분
+              <strong>참가 신청 마감</strong> : 7월 14일 23시 59분 까지
             </S.HanseithonDateText>
           </S.HanseithonJoinContainer>
           <S.ButtonContainer>

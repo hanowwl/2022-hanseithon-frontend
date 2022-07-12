@@ -10,11 +10,9 @@ export const TitleContainer = styled.div`
   padding-bottom: 5.1rem;
   border-bottom: 1px solid #aaaaaa;
 
-  @media ${Device.tabletL} {
+  @media ${Device.mobileL} {
     font-size: 10rem;
-  }
-  @media ${Device.tabletS} {
-    font-size: 6rem;
+    margin-top: -6.8rem;
   }
 `;
 
@@ -22,7 +20,7 @@ export const JoinPageWrapper = styled.section`
   margin-top: 10rem;
   padding-bottom: 20rem;
 
-  @media ${Device.tabletL} {
+  @media ${Device.mobileL} {
     padding-bottom: 12rem;
   }
 `;
@@ -40,7 +38,7 @@ export const JoinDeadLineTitle = styled.h1`
     font-family: "Spectral SC", sans-serif;
   }
 
-  @media ${Device.tabletL} {
+  @media ${Device.mobileL} {
     font-size: 1.8rem;
   }
 `;
@@ -50,7 +48,7 @@ export const JoinDeadLineTimeText = styled.p`
   padding: 0;
   font-size: 13rem;
   font-weight: 700;
-  @media ${Device.tabletL} {
+  @media ${Device.mobileL} {
     margin-top: 1rem;
     font-size: 5.5rem;
   }
@@ -58,13 +56,17 @@ export const JoinDeadLineTimeText = styled.p`
 
 export const JoinPageSectionContentContainer = styled.div`
   display: flex;
-  @media ${Device.tabletL} {
+  @media ${Device.mobileL} {
     flex-direction: column;
-    padding: 0.5rem;
+    margin-top: -4rem;
   }
 `;
 
-export const HanseithonJoinContainer = styled.div``;
+export const HanseithonJoinContainer = styled.div`
+  @media ${Device.mobileL} {
+    padding-left: 1.4rem;
+  }
+`;
 
 export const HanseithonTitleText = styled.p`
   margin: 0;
@@ -74,8 +76,8 @@ export const HanseithonTitleText = styled.p`
   font-weight: 300;
   font-family: "Spectral SC", sans-serif;
 
-  @media ${Device.tabletL} {
-    font-size: 4rem;
+  @media ${Device.mobileL} {
+    font-size: 3.5rem;
   }
 `;
 
@@ -85,9 +87,9 @@ export const HanseithonDescriptionText = styled.div`
   line-height: 3.8rem;
   margin-bottom: 5rem;
 
-  @media ${Device.tabletL} {
+  @media ${Device.mobileL} {
     font-size: 1.4rem;
-    line-height: 2rem;
+    line-height: 2.1rem;
   }
 `;
 
@@ -95,7 +97,7 @@ export const HanseithonDateText = styled.p`
   font-size: 1.5rem;
   line-height: 3rem;
 
-  @media ${Device.tabletL} {
+  @media ${Device.mobileL} {
     font-size: 1.3rem;
     line-height: 2.3rem;
     margin-bottom: -0.5rem;
@@ -118,7 +120,7 @@ export const ButtonContainer = styled.div`
     margin-bottom: 1.5rem;
   }
 
-  @media ${Device.tabletL} {
+  @media ${Device.mobileL} {
     font-size: 0rem;
     padding-left: 0rem;
     margin-top: 5rem;
