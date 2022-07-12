@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable consistent-return */
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import { instance } from "./api";
@@ -21,10 +21,13 @@ import {
 export const App: React.FC = () => {
   const { data: user, isSuccess } = useFetchUser();
   const { addModal, removeCurrentModal } = useModal();
+  const [accessToken, setAccessToken] = useState("");
 
   useEffect(() => {
-    const accessToken =
-      instance.defaults.headers.common.Authorization.toString().split(" ")[1];
+    if (instance.defaults.headers.common.Authorization)
+      setAccessToken(
+        instance.defaults.headers.common.Authorization.toString().split(" ")[1],
+      );
 
     if (window.location.pathname === "/internal") return;
     if (!user?.result.networkVerified && isSuccess)
