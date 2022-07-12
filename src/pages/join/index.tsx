@@ -131,7 +131,7 @@ export const JoinPage: React.FC = () => {
 
   return (
     <DefaultLayout conversion={false}>
-      <section style={{ marginTop: "10rem", paddingBottom: "20rem" }}>
+      <S.JoinPageWrapper>
         <S.TitleContainer>
           <S.JoinDeadLineTitle>
             by the <strong>TEAM BUILD</strong> deadline
@@ -179,7 +179,7 @@ export const JoinPage: React.FC = () => {
             )}
           </S.ButtonContainer>
         </S.JoinPageSectionContentContainer>
-      </section>
+      </S.JoinPageWrapper>
     </DefaultLayout>
   );
 };
