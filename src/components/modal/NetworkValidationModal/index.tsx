@@ -25,7 +25,7 @@ export const NetworkValidationModal = ({
       },
       handleOnSubmit: () => {
         window.open(
-          "http://localhost:3000/internal",
+          "http://172.16.255.100/internal",
           "_blank",
           "width=400, height=500",
         );
