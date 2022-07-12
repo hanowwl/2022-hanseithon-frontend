@@ -64,7 +64,7 @@ export const NavLoginButton = styled(Button)`
   background-color: var(--color-primary);
 `;
 
-export const NavberDrawerMenuBar = styled.button<{ status: boolean }>`
+export const NavbarDrawerMenuBar = styled.button<{ status: boolean }>`
   outline: none;
   border: none;
   background: none;
@@ -122,7 +122,7 @@ export const NavberDrawerMenuBar = styled.button<{ status: boolean }>`
   }
 `;
 
-export const NavberDrawerMenuListContainer = styled.div<{
+export const NavbarDrawerMenuListContainer = styled.div<{
   size: boolean;
   status: boolean;
 }>`

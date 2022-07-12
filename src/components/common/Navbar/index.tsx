@@ -46,14 +46,14 @@ export const Navbar: React.FC<NavbarProps> = ({
         <LogoTempSVG />
       </S.LogoWrapper>
       {size ? (
-        <S.NavberDrawerMenuBar
+        <S.NavbarDrawerMenuBar
           status={onClickMenuBar}
           onClick={() => setOnClickMenuBar(!onClickMenuBar)}
         >
           <span />
           <span />
           <span />
-        </S.NavberDrawerMenuBar>
+        </S.NavbarDrawerMenuBar>
       ) : (
         <S.NavbarMenuListContainer alignMenuCenter={alignMenuCenter}>
           <S.NavbarMenuList>
@@ -80,7 +80,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           )}
         </S.NavbarMenuListContainer>
       )}
-      <S.NavberDrawerMenuListContainer size={size} status={onClickMenuBar}>
+      <S.NavbarDrawerMenuListContainer size={size} status={onClickMenuBar}>
         {navbarMenu.map((v) => (
           <S.StyledLink key={v.to} to={v.to} end>
             {v.text}
@@ -95,7 +95,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             로그인
           </S.NavDrawerLoginButton>
         )}
-      </S.NavberDrawerMenuListContainer>
+      </S.NavbarDrawerMenuListContainer>
     </S.NavbarContainer>
   );
 };
