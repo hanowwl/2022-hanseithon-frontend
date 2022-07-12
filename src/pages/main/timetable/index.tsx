@@ -71,7 +71,7 @@ export const TimeTable: React.FC = () => {
               <S.TimeTableTodo>점심 식사</S.TimeTableTodo>
             </S.TimeTableCalendar>
             <S.TimeTableCalendar>
-              <S.TimeTableTime>13:00 ~ 19:30</S.TimeTableTime>
+              <S.TimeTableTime>13:00 ~ 13:30</S.TimeTableTime>
               <S.TimeTableTodo>이벤트 타임</S.TimeTableTodo>
             </S.TimeTableCalendar>
             <S.TimeTableCalendar>

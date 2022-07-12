@@ -54,7 +54,7 @@ export const HanseithonTitleText = styled.p`
   padding: 0;
   letter-spacing: -0.25rem;
   font-size: 4.6rem;
-  font-weight: 200;
+  font-weight: 300;
   font-family: "Spectral SC", sans-serif;
 `;
 
