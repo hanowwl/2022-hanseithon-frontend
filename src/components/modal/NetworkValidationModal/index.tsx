@@ -1,6 +1,3 @@
-import { toast } from "react-toastify";
-
-import { checkIsInternalNetwork } from "src/api";
 import { ModalStateItem } from "src/store/modal";
 
 interface NetworkValidationModalProps {
@@ -27,21 +24,11 @@ export const NetworkValidationModal = ({
         text: "인증하기",
       },
       handleOnSubmit: () => {
-        checkIsInternalNetwork()
-          .then(() => {
-            toast.success("교내망 인증에 성공했어요😊", {
-              autoClose: 3000,
-              position: toast.POSITION.BOTTOM_RIGHT,
-              theme: "dark",
-            });
-          })
-          .catch(() => {
-            toast.error("교내망 인증에 실패했어요😞", {
-              autoClose: 3000,
-              position: toast.POSITION.BOTTOM_RIGHT,
-              theme: "dark",
-            });
-          });
+        window.open(
+          "http://localhost:3000/internal",
+          "_blank",
+          "width=400, height=500",
+        );
       },
       handleOnClose: () => {
         removeCurrentModal();
