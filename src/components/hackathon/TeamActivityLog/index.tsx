@@ -16,12 +16,12 @@ export const TeamActivityLog: React.FC<AllUserProfileResponse> = ({
       <S.TeamActivityLogInfoText>
         {user?.name === team?.owner.name ? (
           <span>
-            <strong>{user.name}</strong>님이 팀 <marker>{team?.name}</marker>를
+            <strong>{user.name}</strong>님이 <marker>{team?.name}</marker> 팀을
             생성하셨습니다.
           </span>
         ) : (
           <span>
-            <strong>{user.name}</strong>님이 팀 <marker>{team?.name}</marker>를
+            <strong>{user.name}</strong>님이 <marker>{team?.name}</marker> 팀을
             참가하셨습니다.
           </span>
         )}
