@@ -24,11 +24,6 @@ export const App: React.FC = () => {
   const [accessToken, setAccessToken] = useState("");
 
   useEffect(() => {
-    if (instance.defaults.headers.common.Authorization)
-      setAccessToken(
-        instance.defaults.headers.common.Authorization.toString().split(" ")[1],
-      );
-
     if (window.location.pathname === "/internal") return;
     if (!user?.result.networkVerified && isSuccess)
       return NetworkValidationModal({
@@ -36,8 +31,18 @@ export const App: React.FC = () => {
         removeCurrentModal,
         accessToken,
       });
-    return undefined;
-  }, [isSuccess]);
+
+    return () => {
+      if (!user?.result.networkVerified && isSuccess) removeCurrentModal();
+    };
+  }, [isSuccess, accessToken]);
+
+  useEffect(() => {
+    if (instance.defaults.headers.common.Authorization)
+      setAccessToken(
+        instance.defaults.headers.common.Authorization.toString().split(" ")[1],
+      );
+  }, [instance.defaults.headers.common.Authorization]);
 
   return (
     <BrowserRouter>
