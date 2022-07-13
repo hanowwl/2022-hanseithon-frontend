@@ -24,6 +24,7 @@ export const InternalPage: React.FC = () => {
         },
       );
       setTimeout(() => {
+        window.dispatchEvent(new Event("internal-success"));
         window.close();
       }, 5000);
     },

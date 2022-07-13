@@ -26,11 +26,15 @@ export const NetworkValidationModal = ({
         text: "인증하기",
       },
       handleOnSubmit: () => {
-        window.open(
+        const popup = window.open(
           `http://172.16.255.100/internal?token=${accessToken}`,
           "_blank",
           "width=400, height=500",
         );
+
+        popup?.addEventListener("internal-success", () => {
+          window.location.reload();
+        });
       },
       handleOnClose: () => {
         removeCurrentModal();
