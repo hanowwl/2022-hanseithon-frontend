@@ -63,10 +63,9 @@ export const JoinPage: React.FC = () => {
     });
 
   const handleOnClickCreateTeam = () => {
+    if (!user?.result) return addRequireLoginModal();
     const accessToken =
       instance.defaults.headers.common.Authorization.toString().split(" ")[1];
-
-    if (!user?.result) return addRequireLoginModal();
     if (!user?.result.networkVerified && isSuccess)
       return NetworkValidationModal({
         addModal,
@@ -100,10 +99,10 @@ export const JoinPage: React.FC = () => {
   };
 
   const handleOnClickJoinTeam = () => {
+    if (!user?.result) return addRequireLoginModal();
     const accessToken =
       instance.defaults.headers.common.Authorization.toString().split(" ")[1];
 
-    if (!user?.result) return addRequireLoginModal();
     if (!user?.result.networkVerified && isSuccess)
       return NetworkValidationModal({
         addModal,
