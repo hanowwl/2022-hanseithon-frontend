@@ -81,7 +81,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </S.NavbarMenuListContainer>
       )}
 
-      {size && (
+      {size && onClickMenuBar && (
         <S.NavbarDrawerMenuListContainer size={size} status={onClickMenuBar}>
           {navbarMenu.map((v) => (
             <S.StyledLink key={v.to} to={v.to} end>
