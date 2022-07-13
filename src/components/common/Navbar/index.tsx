@@ -80,22 +80,25 @@ export const Navbar: React.FC<NavbarProps> = ({
           )}
         </S.NavbarMenuListContainer>
       )}
-      <S.NavbarDrawerMenuListContainer size={size} status={onClickMenuBar}>
-        {navbarMenu.map((v) => (
-          <S.StyledLink key={v.to} to={v.to} end>
-            {v.text}
-          </S.StyledLink>
-        ))}
-        {fetch ? null : userInfo?.status === "SUCCESS" ? (
-          <S.NavDrawerLoginButton onClick={handleLogoutButtonClick}>
-            로그아웃
-          </S.NavDrawerLoginButton>
-        ) : (
-          <S.NavDrawerLoginButton onClick={() => navigate("/auth/login")}>
-            로그인
-          </S.NavDrawerLoginButton>
-        )}
-      </S.NavbarDrawerMenuListContainer>
+
+      {size && (
+        <S.NavbarDrawerMenuListContainer size={size} status={onClickMenuBar}>
+          {navbarMenu.map((v) => (
+            <S.StyledLink key={v.to} to={v.to} end>
+              {v.text}
+            </S.StyledLink>
+          ))}
+          {fetch ? null : userInfo?.status === "SUCCESS" ? (
+            <S.NavDrawerLoginButton onClick={handleLogoutButtonClick}>
+              로그아웃
+            </S.NavDrawerLoginButton>
+          ) : (
+            <S.NavDrawerLoginButton onClick={() => navigate("/auth/login")}>
+              로그인
+            </S.NavDrawerLoginButton>
+          )}
+        </S.NavbarDrawerMenuListContainer>
+      )}
     </S.NavbarContainer>
   );
 };

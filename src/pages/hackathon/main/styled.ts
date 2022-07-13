@@ -41,7 +41,7 @@ export const HackerProfileCardsListWrapper = styled.div`
   display: flex;
   overflow: auto;
   ::-webkit-scrollbar {
-    height: 3px;
+    height: 8px;
   }
   ::-webkit-scrollbar-thumb {
     background-color: black;
