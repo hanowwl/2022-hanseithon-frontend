@@ -14,8 +14,9 @@ import {
   RegisterStep2Page,
   RegisterStep3Page,
   HackathonMainPage,
-  JoinPage,
+  // JoinPage,
   InternalPage,
+  SumbitPage,
 } from "./pages";
 
 export const App: React.FC = () => {
@@ -63,11 +64,14 @@ export const App: React.FC = () => {
         <Route path="hackathon">
           <Route index element={<HackathonMainPage />} />
         </Route>
-        <Route path="join">
+        {/* <Route path="join">
           <Route index element={<JoinPage />} />
-        </Route>
+        </Route> */}
         <Route path="internal">
           <Route index element={<InternalPage />} />
+        </Route>
+        <Route path="submit">
+          <Route index element={<SumbitPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
