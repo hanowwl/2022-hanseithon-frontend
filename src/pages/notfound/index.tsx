@@ -9,7 +9,7 @@ export const NotFoundPage: React.FC = () => (
     <S.NotFoundPageWrapper>
       <S.NotFoundText>404</S.NotFoundText>
       <S.NotFoundDescription>
-        찾을 수 없는 페이지입니다. <br />
+        찾을 수 없는 페이지에요! <br />
         다른 콘텐츠를 보러 가보시겠어요?
       </S.NotFoundDescription>
       <S.NotFoundGoToMainText to="/hackathon">
