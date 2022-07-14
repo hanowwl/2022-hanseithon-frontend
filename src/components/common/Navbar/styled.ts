@@ -55,6 +55,71 @@ export const StyledLink = styled(NavLink)`
   }
 `;
 
+export const StyledNonLink = styled.div<{ tooltip?: string }>`
+  all: unset;
+  font-size: 1.4rem;
+  font-weight: 300;
+  padding: 0.8rem 1.3rem;
+  border-radius: 0.5rem;
+  transition: background 250ms;
+  cursor: pointer;
+
+  &.active {
+    color: var(--color-primary);
+    font-weight: 400;
+  }
+
+  &:hover {
+    background-color: rgba(24, 24, 24, 0.67);
+  }
+
+  ${(props) =>
+    props.tooltip &&
+    css`
+      position: relative;
+      :before,
+      :after {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+        transition: all 0.2s ease;
+        font-size: 11px;
+        letter-spacing: -1px;
+      }
+      :before {
+        content: attr(data-tooltip);
+        height: 13px;
+        position: absolute;
+        bottom: -20px;
+        padding: 5px 10px 7px;
+        border-radius: 5px;
+        color: #fff;
+        background: var(--color-primary);
+        font-family: "Spoqa Han Sans Neo", sans-serif;
+      }
+      :after {
+        content: "";
+        border-left: 5px solid transparent;
+        bottom: 2px;
+        border-right: 5px solid transparent;
+        border-bottom: 5px solid var(--color-primary);
+      }
+      :not([data-tooltip=""]):hover:before {
+        visibility: visible;
+        opacity: 1;
+        bottom: -30px;
+      }
+      :not([data-tooltip=""]):hover:after {
+        visibility: visible;
+        opacity: 1;
+        bottom: -8px;
+      }
+    `}
+`;
+
 export const NavLoginButton = styled(Button)`
   width: fit-content !important;
   font-size: 1.2rem;
