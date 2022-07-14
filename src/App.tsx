@@ -16,7 +16,7 @@ import {
   HackathonMainPage,
   // JoinPage,
   InternalPage,
-  SumbitPage,
+  SubmitPage,
 } from "./pages";
 
 export const App: React.FC = () => {
@@ -71,7 +71,7 @@ export const App: React.FC = () => {
           <Route index element={<InternalPage />} />
         </Route>
         <Route path="submit">
-          <Route index element={<SumbitPage />} />
+          <Route index element={<SubmitPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

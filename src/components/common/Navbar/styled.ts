@@ -55,7 +55,7 @@ export const StyledLink = styled(NavLink)`
   }
 `;
 
-export const StyledNonLink = styled.div<{ tootip?: string }>`
+export const StyledNonLink = styled.div<{ tooltip?: string }>`
   all: unset;
   font-size: 1.4rem;
   font-weight: 300;
@@ -74,7 +74,7 @@ export const StyledNonLink = styled.div<{ tootip?: string }>`
   }
 
   ${(props) =>
-    props.tootip &&
+    props.tooltip &&
     css`
       position: relative;
       :before,

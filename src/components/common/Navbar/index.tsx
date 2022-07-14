@@ -61,7 +61,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               v.tooltip ? (
                 <S.StyledNonLink
                   data-tooltip={v.tooltip}
-                  tootip={v?.tooltip}
+                  tooltip={v?.tooltip}
                   key={v.to}
                 >
                   {v.text}
