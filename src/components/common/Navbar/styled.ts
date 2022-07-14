@@ -87,7 +87,6 @@ export const StyledNonLink = styled.div<{ tooltip?: string }>`
         white-space: nowrap;
         transition: all 0.2s ease;
         font-size: 11px;
-        font-family: dotum;
         letter-spacing: -1px;
       }
       :before {
