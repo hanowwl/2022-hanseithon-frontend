@@ -14,6 +14,6 @@ export const navbarMenu = [
   {
     text: "파일 제출",
     to: "/submit",
-    tooltip: "아직 준비중",
+    tooltip: "아직 준비 중이에요 😶",
   },
 ];
