@@ -9,6 +9,7 @@ export const TeamInfoCardContainer = styled.div`
   border-radius: 1rem;
   padding: 2.5rem;
   padding-right: 10rem;
+  max-width: 77rem;
 
   & > p,
   h1 {
@@ -22,6 +23,7 @@ export const TeamInfoCardContainer = styled.div`
 `;
 
 export const TeamInfoCardTypeBox = styled.div`
+  text-align: center;
   padding: 3.8rem;
   border-radius: 1rem;
   margin-right: 2.5rem;
@@ -59,7 +61,6 @@ export const TeamInfoCardUserMembersTitle = styled.div`
 export const TeamInfoCardUserMembersBox = styled.div`
   background-color: #4b5fff;
   border-radius: 5rem;
-  /* font-size: 1rem; */
   padding: 0.15rem 0.78rem;
   margin-right: 0.5rem;
 `;

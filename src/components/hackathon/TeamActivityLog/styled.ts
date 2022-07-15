@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 
 export const TeamActivityLogContainer = styled.div`
   display: flex;
-  justify-contents: center;
   align-items: center;
   margin-top: 3.5rem;
 `;
