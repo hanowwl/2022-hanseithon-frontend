@@ -17,6 +17,7 @@ import {
   // JoinPage,
   InternalPage,
   SubmitPage,
+  NotFoundPage,
 } from "./pages";
 
 export const App: React.FC = () => {
@@ -49,6 +50,7 @@ export const App: React.FC = () => {
     <BrowserRouter>
       <Routes>
         <Route index element={<MainPage />} />
+        <Route path="*" element={<NotFoundPage />} />
         <Route path="auth">
           <Route path="login" element={<LoginPage />} />
           <Route path="register">
