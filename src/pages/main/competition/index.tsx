@@ -13,7 +13,7 @@ export const Competition: React.FC = () => (
           <td>배 점</td>
         </S.CompetitionTableTheadWrapper>
 
-        <S.CompetitionTabletest>
+        <S.CompetitionTableTbodyWrapper>
           <div>
             <td>생활</td>
             <td>
@@ -105,7 +105,7 @@ export const Competition: React.FC = () => (
               </tr>
             </td>
           </div>
-        </S.CompetitionTabletest>
+        </S.CompetitionTableTbodyWrapper>
       </table>
     </div>
   </div>
