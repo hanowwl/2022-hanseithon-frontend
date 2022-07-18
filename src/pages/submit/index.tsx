@@ -49,8 +49,8 @@ export const SubmitPage: React.FC = () => {
       <S.SubmitPageWrapper>
         <S.SubmitPageContainer>
           <h1>Hacking+Marathon</h1>
-          <S.SumbitPageInfoWrapper>
-            <S.SumbitPageInfoContainer>
+          <S.SubmitPageInfoWrapper>
+            <S.SubmitPageInfoContainer>
               <p>
                 1. 코로나 19의 확산으로 지도교사의 지시 불이행, 방역수칙 위반
                 3회 이상 시 퇴장 조치합니다. <br />
@@ -97,16 +97,16 @@ export const SubmitPage: React.FC = () => {
               무단으로 외출 시 경고와 해당 팀 실격 처리됩니다. <br />
               10. 부정행위 및 비난과 인신공격성 발언의 경우 차기 대회 참가
               자격이 박탈됩니다. */}
-            </S.SumbitPageInfoContainer>
+            </S.SubmitPageInfoContainer>
             <div>
-              <S.SumbitPageDeadLineTimeWrapper>
+              <S.SubmitPageDeadLineTimeWrapper>
                 <div style={{ marginBottom: "3rem" }}>
                   <div style={{ fontSize: "3rem", fontWeight: "300" }}>
                     By the <strong>File Submit</strong> Deadline
                   </div>
                   <SubmitDeadLineTimeText />
                 </div>
-              </S.SumbitPageDeadLineTimeWrapper>
+              </S.SubmitPageDeadLineTimeWrapper>
               <TextField
                 type="file"
                 accept="zip,application/octet-stream,application/zip,application/x-zip,application/x-zip-compressed"
@@ -123,7 +123,7 @@ export const SubmitPage: React.FC = () => {
                 파일 제출
               </Button>
             </div>
-          </S.SumbitPageInfoWrapper>
+          </S.SubmitPageInfoWrapper>
         </S.SubmitPageContainer>
       </S.SubmitPageWrapper>
     </DefaultLayout>

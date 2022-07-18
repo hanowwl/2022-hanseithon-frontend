@@ -31,9 +31,7 @@ export const SubmitDeadLineTimeText = () => {
     fetchTime?.result.second as number,
   );
 
-  // const sumbitDate = new Date(2022, 8, 15, 0, 0, 0);
-  const sumbitDate = new Date(2022, 6, 21, 15, 0, 0);
-  // const sumbitDate = new Date(2022, 6, 18, 11, 5, 0);
+  const submitDate = new Date(2022, 6, 21, 15, 0, 0);
   const [time, setTime] = useState<TimeResponse>({
     year: 0,
     month: 0,
@@ -45,7 +43,7 @@ export const SubmitDeadLineTimeText = () => {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTime(getDateDiff(ToDay, time.year === -1 ? todayDate : sumbitDate));
+      setTime(getDateDiff(ToDay, time.year === -1 ? todayDate : submitDate));
     }, 1000);
     return () => clearInterval(timer);
   }, [time]);

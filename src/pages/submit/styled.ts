@@ -24,7 +24,7 @@ export const SubmitPageContainer = styled.div`
   }
 `;
 
-export const SumbitPageInfoContainer = styled.div`
+export const SubmitPageInfoContainer = styled.div`
   display: flex;
   font-size: 1.8rem;
   line-height: 3rem;
@@ -35,7 +35,7 @@ export const SumbitPageInfoContainer = styled.div`
   }
 `;
 
-export const SumbitPageInfoWrapper = styled.div`
+export const SubmitPageInfoWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -50,7 +50,7 @@ export const SumbitPageInfoWrapper = styled.div`
   }
 `;
 
-export const SumbitPageDeadLineTimeWrapper = styled.div`
+export const SubmitPageDeadLineTimeWrapper = styled.div`
   display: flex;
   & > div {
     font-size: 7rem;
