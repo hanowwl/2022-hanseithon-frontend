@@ -43,7 +43,7 @@ export const MainPage: React.FC = () => {
           variant: "outlined",
         },
         handleOnConfirm: () => removeCurrentModal(),
-        width: "53rem",
+        width: "60rem",
       },
     });
   };

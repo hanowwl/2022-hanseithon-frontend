@@ -1,103 +1,153 @@
 import React from "react";
 
-// import * as S from "./styled";
+import * as S from "./styled";
 
 export const Competition: React.FC = () => (
-  <div>
-    <table border={1} align="center" width="100%">
+  <S.CompetitionTableContainer>
+    <S.CompetitionTableWrapper>
       <thead>
-        <td>부문</td>
-        <td>심사 항목</td>
-        <td>심사 기준</td>
-        <td>배 점</td>
+        <S.CompetitionTableThead>부문</S.CompetitionTableThead>
+        <S.CompetitionTableThead>심사 항목</S.CompetitionTableThead>
+        <S.CompetitionTableThead>심사 기준</S.CompetitionTableThead>
+        <S.CompetitionTableThead>배 점</S.CompetitionTableThead>
       </thead>
       <tbody>
         <tr>
-          <td rowSpan={9}>생활</td>
-          <td rowSpan={4}>기획</td>
-          <td>독창성</td>
-          <td>10</td>
+          <S.CompetitionTableSector rowSpan={9}>생활</S.CompetitionTableSector>
+          <S.CompetitionTableExaminationItems rowSpan={4}>
+            기획
+          </S.CompetitionTableExaminationItems>
+          <S.CompetitionTableJudgingCriteria>
+            독창성
+          </S.CompetitionTableJudgingCriteria>
+          <S.CompetitionTablePoints>10</S.CompetitionTablePoints>
         </tr>
         <tr>
-          <td>확장성</td>
-          <td>10</td>
+          <S.CompetitionTableJudgingCriteria>
+            확장성
+          </S.CompetitionTableJudgingCriteria>
+          <S.CompetitionTablePoints>10</S.CompetitionTablePoints>
         </tr>
         <tr>
-          <td>주제적합성 + 타당성</td>
-          <td>10</td>
+          <S.CompetitionTableJudgingCriteria>
+            주제적합성 + 타당성
+          </S.CompetitionTableJudgingCriteria>
+          <S.CompetitionTablePoints>10</S.CompetitionTablePoints>
         </tr>
         <tr>
-          <td>발표</td>
-          <td>10</td>
+          <S.CompetitionTableJudgingCriteria>
+            발표
+          </S.CompetitionTableJudgingCriteria>
+          <S.CompetitionTablePoints>10</S.CompetitionTablePoints>
         </tr>
         <tr>
-          <td rowSpan={2}>개발</td>
-          <td>최적화</td>
-          <td>10</td>
+          <S.CompetitionTableExaminationItems rowSpan={2}>
+            개발
+          </S.CompetitionTableExaminationItems>
+          <S.CompetitionTableJudgingCriteria>
+            최적화
+          </S.CompetitionTableJudgingCriteria>
+          <S.CompetitionTablePoints>10</S.CompetitionTablePoints>
         </tr>
         <tr>
-          <td>구현완성도</td>
-          <td>20</td>
+          <S.CompetitionTableJudgingCriteria>
+            구현완성도
+          </S.CompetitionTableJudgingCriteria>
+          <S.CompetitionTablePoints>20</S.CompetitionTablePoints>
         </tr>
         <tr>
-          <td rowSpan={3}>디자인</td>
-          <td>편의성</td>
-          <td>10</td>
+          <S.CompetitionTableExaminationItems rowSpan={3}>
+            디자인
+          </S.CompetitionTableExaminationItems>
+          <S.CompetitionTableJudgingCriteria>
+            편의성
+          </S.CompetitionTableJudgingCriteria>
+          <S.CompetitionTablePoints>10</S.CompetitionTablePoints>
         </tr>
         <tr>
-          <td>직관성</td>
-          <td>10</td>
+          <S.CompetitionTableJudgingCriteria>
+            직관성
+          </S.CompetitionTableJudgingCriteria>
+          <S.CompetitionTablePoints>10</S.CompetitionTablePoints>
         </tr>
         <tr>
-          <td>심미성</td>
-          <td>10</td>
+          <S.CompetitionTableJudgingCriteria>
+            심미성
+          </S.CompetitionTableJudgingCriteria>
+          <S.CompetitionTablePoints>10</S.CompetitionTablePoints>
         </tr>
 
         <tr>
-          <td rowSpan={10}>게임</td>
-          <td rowSpan={4}>기획</td>
-          <td>독창성</td>
-          <td>10</td>
+          <S.CompetitionTableSector rowSpan={10}>게임</S.CompetitionTableSector>
+          <S.CompetitionTableExaminationItems rowSpan={4}>
+            기획
+          </S.CompetitionTableExaminationItems>
+          <S.CompetitionTableJudgingCriteria>
+            독창성
+          </S.CompetitionTableJudgingCriteria>
+          <S.CompetitionTablePoints>10</S.CompetitionTablePoints>
         </tr>
         <tr>
-          <td>재미 요소</td>
-          <td>10</td>
+          <S.CompetitionTableJudgingCriteria>
+            재미 요소
+          </S.CompetitionTableJudgingCriteria>
+          <S.CompetitionTablePoints>10</S.CompetitionTablePoints>
         </tr>
         <tr>
-          <td>주제적합성 + 타당성</td>
-          <td>10</td>
+          <S.CompetitionTableJudgingCriteria>
+            주제적합성 + 타당성
+          </S.CompetitionTableJudgingCriteria>
+          <S.CompetitionTablePoints>10</S.CompetitionTablePoints>
         </tr>
         <tr>
-          <td>발표</td>
-          <td>10</td>
+          <S.CompetitionTableJudgingCriteria>
+            발표
+          </S.CompetitionTableJudgingCriteria>
+          <S.CompetitionTablePoints>10</S.CompetitionTablePoints>
         </tr>
         <tr>
-          <td rowSpan={2}>개발</td>
-          <td>최적화</td>
-          <td>10</td>
+          <S.CompetitionTableExaminationItems rowSpan={2}>
+            개발
+          </S.CompetitionTableExaminationItems>
+          <S.CompetitionTableJudgingCriteria>
+            최적화
+          </S.CompetitionTableJudgingCriteria>
+          <S.CompetitionTablePoints>10</S.CompetitionTablePoints>
         </tr>
         <tr>
-          <td>구현완성도</td>
-          <td>20</td>
+          <S.CompetitionTableJudgingCriteria>
+            구현완성도
+          </S.CompetitionTableJudgingCriteria>
+          <S.CompetitionTablePoints>20</S.CompetitionTablePoints>
         </tr>
         <tr>
-          <td rowSpan={4}>디자인</td>
-          <td>심미성</td>
-          <td>8</td>
+          <S.CompetitionTableExaminationItems rowSpan={4}>
+            디자인
+          </S.CompetitionTableExaminationItems>
+          <S.CompetitionTableJudgingCriteria>
+            심미성
+          </S.CompetitionTableJudgingCriteria>
+          <S.CompetitionTablePoints>8</S.CompetitionTablePoints>
         </tr>
         <tr>
-          <td>창의성</td>
-          <td>8</td>
+          <S.CompetitionTableJudgingCriteria>
+            창의성
+          </S.CompetitionTableJudgingCriteria>
+          <S.CompetitionTablePoints>8</S.CompetitionTablePoints>
         </tr>
         <tr>
-          <td>직관성</td>
-          <td>7</td>
+          <S.CompetitionTableJudgingCriteria>
+            직관성
+          </S.CompetitionTableJudgingCriteria>
+          <S.CompetitionTablePoints>7</S.CompetitionTablePoints>
         </tr>
         <tr>
-          <td>편의성</td>
-          <td>7</td>
+          <S.CompetitionTableJudgingCriteria>
+            편의성
+          </S.CompetitionTableJudgingCriteria>
+          <S.CompetitionTablePoints>7</S.CompetitionTablePoints>
         </tr>
       </tbody>
-    </table>
-  </div>
+    </S.CompetitionTableWrapper>
+  </S.CompetitionTableContainer>
 );
