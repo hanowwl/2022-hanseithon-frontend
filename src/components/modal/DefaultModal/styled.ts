@@ -21,7 +21,7 @@ export const ModalContainer = styled.div<{ width?: string | number }>`
   transform: translateY(-50%);
   width: ${(props) => props.width || "40rem"};
   min-width: 40rem;
-  max-width: 53rem;
+  max-width: 60rem;
   margin: 0 auto;
   padding: 4rem;
   border-radius: 0.7rem;
