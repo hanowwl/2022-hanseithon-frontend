@@ -57,21 +57,17 @@ export const Navbar: React.FC<NavbarProps> = ({
       ) : (
         <S.NavbarMenuListContainer alignMenuCenter={alignMenuCenter}>
           <S.NavbarMenuList>
-            {navbarMenu.map((v) =>
-              v.tooltip ? (
-                <S.StyledNonLink
-                  data-tooltip={v.tooltip}
-                  tooltip={v?.tooltip}
-                  key={v.to}
-                >
-                  {v.text}
-                </S.StyledNonLink>
-              ) : (
-                <S.StyledLink key={v.to} to={v.to} end>
-                  {v.text}
-                </S.StyledLink>
-              ),
-            )}
+            {navbarMenu.map((v) => (
+              <S.StyledLink
+                key={v.to}
+                to={v.to}
+                data-tooltip={v.tooltip}
+                tooltip={v?.tooltip}
+                end
+              >
+                {v.text}
+              </S.StyledLink>
+            ))}
           </S.NavbarMenuList>
           {fetch ? null : userInfo?.status === "SUCCESS" ? (
             <S.NavLoginButton

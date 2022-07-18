@@ -36,26 +36,7 @@ export const NavbarMenuList = styled.ul`
   align-items: center;
 `;
 
-export const StyledLink = styled(NavLink)`
-  all: unset;
-  font-size: 1.4rem;
-  font-weight: 300;
-  padding: 0.8rem 1.3rem;
-  border-radius: 0.5rem;
-  transition: background 250ms;
-  cursor: pointer;
-
-  &.active {
-    color: var(--color-primary);
-    font-weight: 400;
-  }
-
-  &:hover {
-    background-color: rgba(24, 24, 24, 0.67);
-  }
-`;
-
-export const StyledNonLink = styled.div<{ tooltip?: string }>`
+export const StyledLink = styled(NavLink)<{ tooltip?: string }>`
   all: unset;
   font-size: 1.4rem;
   font-weight: 300;
