@@ -1,9 +1,10 @@
 import React from "react";
+import YouTube from "react-youtube";
 
-import HackathonMainBannerPNG from "src/assets/png/hackathon-main-banner.png";
-import { HackerProfileCard, Navbar } from "src/components";
+import { Button, HackerProfileCard, Navbar } from "src/components";
 import { TeamActivityLog } from "src/components/hackathon/TeamActivityLog";
 import { TeamInfoCard } from "src/components/hackathon/TeamInfoCard";
+import { useModal } from "src/hook";
 import { useFetchAllUser, useFetchUser } from "src/hook/query";
 
 import * as S from "./styled";
@@ -11,11 +12,65 @@ import * as S from "./styled";
 export const HackathonMainPage: React.FC = () => {
   const { data: user, isFetching } = useFetchUser();
   const { data: hackerProfiles } = useFetchAllUser();
+  const { addModal, removeCurrentModal } = useModal();
 
+  const addRequireLoginModal = () => {
+    addModal({
+      type: "team",
+      props: {
+        width: "80rem",
+        title: "주제공개 영상 보기",
+        description: "영상 공개는 7월 18일 정각에 진행될 예정이에요!",
+        content: (
+          <YouTube
+            videoId="EqC5AQLqcr8"
+            style={{ marginBottom: "2rem" }}
+            opts={{
+              width: "100%",
+              height: "315",
+              playerVars: {
+                autoplay: 1,
+                rel: 0,
+                modestbranding: 1,
+              },
+            }}
+            onEnd={(e) => {
+              e.target.stopVideo(0);
+            }}
+          />
+        ),
+        closeButton: {
+          text: "취소하기",
+        },
+        submitButton: {
+          text: "보러가기",
+        },
+        handleOnSubmit: () => {
+          window.open(
+            "https://www.youtube.com/watch?v=EqC5AQLqcr8&feature=youtu.be",
+            "_blank",
+          );
+        },
+        handleOnClose: () => removeCurrentModal(),
+      },
+    });
+  };
   return (
     <S.HackathonMainPageContainer>
       <Navbar userInfo={user} fetch={isFetching} />
-      <S.HackathonMainPageBannerImage src={HackathonMainBannerPNG} />
+      <S.HackathonMainPageBannerImage>
+        <div>
+          <h1>주제공개 영상을 보시겠습니까? </h1>
+          <Button
+            onClick={addRequireLoginModal}
+            variant="outlined"
+            style={{ width: "50%" }}
+          >
+            지금 영상보기
+          </Button>
+        </div>
+      </S.HackathonMainPageBannerImage>
+
       <section style={{ marginBottom: "4.9rem" }}>
         <S.SectionTitleContainer style={{ marginBottom: "1.9rem" }}>
           <S.NewJoinedMakerTitle>새로 참가한 해커 🧑‍💻</S.NewJoinedMakerTitle>

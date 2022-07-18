@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
 
+import HackathonMainBannerPNG from "src/assets/png/hackathon-main-banner.png";
 import { Button } from "src/components";
 
 export const HackathonMainPageContainer = styled.div`
@@ -11,12 +12,36 @@ export const HackathonMainPageContainer = styled.div`
   padding-bottom: 7rem;
 `;
 
-export const HackathonMainPageBannerImage = styled.img`
-  width: 100%;
-  height: 100%;
+export const HackathonMainPageBannerImage = styled.div`
+  width: auto;
+  height: 35rem;
+  max-height: 100%;
+  max-width: 100%;
+  user-select: none;
   margin-top: 3.5rem;
   margin-bottom: 4.5rem;
   border-radius: 1rem;
+  transition: all 250ms;
+  object-fit: contain;
+  background: url(${HackathonMainBannerPNG}) no-repeat;
+  background-size: cover;
+  & > div {
+    display: none;
+  }
+
+  :hover {
+    opacity: 0.8;
+    & > div {
+      display: block;
+      transition: all 250ms;
+      display: flex;
+      color: var(--color-text-primary);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      height: 100%;
+    }
+  }
 `;
 
 export const SectionTitleContainer = styled.div`
