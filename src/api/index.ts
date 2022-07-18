@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 import axios from "axios";
 
 export const API_SUFFIX = {
@@ -10,6 +11,7 @@ export const API_SUFFIX = {
   TEAM: "/teams",
   JOIN_TEAM: "/teams/join",
   TIME: "/time",
+  FILE: "/files/upload",
 };
 
 export const instance = axios.create({
@@ -60,5 +62,16 @@ export const checkIsInternalNetwork = async (): Promise<APIResponse<"">> => {
   const { data } = await instance.post(
     "http://172.16.255.100/api/auth/internal-auth",
   );
+  return data;
+};
+
+export const fileUpload = async (uploadData: any): Promise<APIResponse<{}>> => {
+  const formData = new FormData();
+  formData.append("file", uploadData);
+  const { data } = await instance.post(API_SUFFIX.FILE, formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
   return data;
 };
