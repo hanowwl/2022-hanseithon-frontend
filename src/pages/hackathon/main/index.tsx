@@ -20,7 +20,7 @@ export const HackathonMainPage: React.FC = () => {
       props: {
         width: "80rem",
         title: "주제공개 영상 보기",
-        description: "영상 공개는 7월 18일 정각에 진행될 예정이에요!",
+        description: "영상 공개는 7월 20일 오후 4시 정각에 진행될 예정이에요!",
         content: (
           <YouTube
             videoId="EqC5AQLqcr8"
@@ -46,10 +46,7 @@ export const HackathonMainPage: React.FC = () => {
           text: "보러가기",
         },
         handleOnSubmit: () => {
-          window.open(
-            "https://www.youtube.com/watch?v=EqC5AQLqcr8&feature=youtu.be",
-            "_blank",
-          );
+          window.open("https://www.youtube.com/watch?v=6S0IAKzcYX8", "_blank");
         },
         handleOnClose: () => removeCurrentModal(),
       },
