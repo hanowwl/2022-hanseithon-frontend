@@ -1,4 +1,5 @@
-import React, { useCallback, useRef, useState } from "react";
+/* eslint-disable consistent-return */
+import React, { useMemo, useCallback, useRef, useState } from "react";
 import { toast } from "react-toastify";
 
 import { fileUpload } from "src/api";
@@ -8,12 +9,16 @@ import {
   SubmitDeadLineTimeText,
   TextField,
 } from "src/components";
+import { useFetchUser } from "src/hook/query";
 
 import * as S from "./styled";
 
 export const SubmitPage: React.FC = () => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [file, setFile] = useState<object>({});
+  const { data: user } = useFetchUser();
+  const isUserHasTeam = useMemo(() => user?.result.team, [user]);
+
   const onUploadFile = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) {
       return;
@@ -22,6 +27,12 @@ export const SubmitPage: React.FC = () => {
   }, []);
 
   const handleOnSubmit = () => {
+    if (!isUserHasTeam)
+      return toast.error("유저 정보 또는 소속된 팀이 없어요 😞", {
+        autoClose: 3000,
+        position: toast.POSITION.BOTTOM_RIGHT,
+        theme: "dark",
+      });
     fileUpload(file)
       .then(() => {
         toast.success("파일 제출에 성공하셨습니다 😎", {
