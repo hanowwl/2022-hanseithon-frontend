@@ -133,6 +133,7 @@ export const SubmitPage: React.FC = () => {
                 style={{ marginBottom: "2rem" }}
                 ref={inputRef}
                 onChange={onUploadFile}
+                disabled={uploadPercentage > 0}
               />
               <Button
                 type="submit"
