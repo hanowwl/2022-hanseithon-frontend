@@ -10,7 +10,6 @@ export const ModalWrapper = styled.div`
   bottom: 0;
   left: 0;
   z-index: 1000;
-  overflow: auto;
   outline: 0;
 `;
 
@@ -27,8 +26,9 @@ export const ModalContainer = styled.div<{ width?: string | number }>`
   border-radius: 0.7rem;
   background-color: var(--modal-background);
   animation: modal_fade_in 300ms;
+  overflow: auto;
 
-  @media ${Device.tabletS} {
+  @media ${Device.tabletL} {
     width: 100%;
     height: 100%;
     min-width: 0;
