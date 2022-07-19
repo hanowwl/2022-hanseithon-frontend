@@ -1,8 +1,14 @@
 import styled from "@emotion/styled";
 
+import { Device } from "src/constants";
+
 export const CompetitionTableContainer = styled.div`
   margin: 2rem 0;
   font-size: 1.4rem;
+
+  @media ${Device.tabletS} {
+    font-size: 1.2rem;
+  }
 `;
 
 export const CompetitionTableWrapper = styled.table`
@@ -30,11 +36,19 @@ export const CompetitionTableExaminationItems = styled.td`
 export const CompetitionTableJudgingCriteria = styled.td`
   border-bottom: 1px solid #2c2c2c;
   border-right: 1px solid #2c2c2c;
-  padding: 0.3rem;
+  padding: 0.5rem;
+
+  @media ${Device.tabletS} {
+    padding: 0.3rem;
+  }
 `;
 
 export const CompetitionTablePoints = styled.td`
   border-bottom: 1px solid #2c2c2c;
   border-right: 1px solid #2c2c2c;
-  padding: 0.3rem;
+  padding: 0.5rem;
+
+  @media ${Device.tabletS} {
+    padding: 0.3rem;
+  }
 `;
