@@ -117,7 +117,7 @@ export const SubmitPage: React.FC = () => {
               <br /> - 기존 작성했던 코드를 과도하게 재사용했다고 판단되는 경우
               <br />- 외부 유료 asset 사용
             </S.SubmitPageInfoContainer>
-            <S.SubmitPageFormCotainer style={{ maxWidth: "38rem" }}>
+            <S.SubmitPageFormContainer style={{ maxWidth: "38rem" }}>
               <S.SubmitPageDeadLineTimeWrapper>
                 <div style={{ marginBottom: "3rem" }}>
                   <div style={{ fontSize: "3rem", fontWeight: "300" }}>
@@ -144,7 +144,7 @@ export const SubmitPage: React.FC = () => {
                   ? `🚀 업로드 중 - ${uploadPercentage}%`
                   : "파일 제출"}
               </Button>
-            </S.SubmitPageFormCotainer>
+            </S.SubmitPageFormContainer>
           </S.SubmitPageInfoWrapper>
         </S.SubmitPageContainer>
       </S.SubmitPageWrapper>

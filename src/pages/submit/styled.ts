@@ -24,7 +24,7 @@ export const SubmitPageContainer = styled.div`
   }
 `;
 
-export const SubmitPageFormCotainer = styled.div`
+export const SubmitPageFormContainer = styled.div`
   & > button {
     :disabled {
       background-color: var(--color-primary-darker);
