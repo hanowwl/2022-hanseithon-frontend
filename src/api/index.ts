@@ -1,5 +1,8 @@
 /* eslint-disable no-restricted-syntax */
 import axios from "axios";
+import React from "react";
+
+import { FileSubmitProps } from "src/pages";
 
 export const API_SUFFIX = {
   BASEURL: "/api",
@@ -65,12 +68,26 @@ export const checkIsInternalNetwork = async (): Promise<APIResponse<"">> => {
   return data;
 };
 
-export const fileUpload = async (uploadData: any): Promise<APIResponse<{}>> => {
+export const fileUpload = async (
+  uploadData: FileSubmitProps,
+  {
+    onUploadProgress,
+  }: {
+    onUploadProgress: React.Dispatch<React.SetStateAction<number>>;
+  },
+): Promise<APIResponse<{}>> => {
+  const blobUploadData = uploadData as Blob;
   const formData = new FormData();
-  formData.append("file", uploadData);
+  formData.append("file", blobUploadData);
   const { data } = await instance.post(API_SUFFIX.FILE, formData, {
     headers: {
       "Content-Type": "multipart/form-data",
+    },
+    onUploadProgress: (progressEvent) => {
+      const progress = Math.round(
+        (progressEvent.loaded * 100) / progressEvent.total,
+      );
+      onUploadProgress(progress);
     },
   });
   return data;

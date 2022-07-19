@@ -1,5 +1,11 @@
 /* eslint-disable consistent-return */
-import React, { useMemo, useCallback, useRef, useState } from "react";
+import React, {
+  useMemo,
+  useCallback,
+  useRef,
+  useState,
+  useEffect,
+} from "react";
 import { toast } from "react-toastify";
 
 import { fileUpload } from "src/api";
@@ -13,9 +19,18 @@ import { useFetchUser } from "src/hook/query";
 
 import * as S from "./styled";
 
+export interface FileSubmitProps {
+  lastModified?: number;
+  lastModifiedDate?: Date;
+  name?: string;
+  size?: number;
+  type?: string;
+  webkitRelativePath?: string;
+}
 export const SubmitPage: React.FC = () => {
+  const [uploadPercentage, setUploadPercentage] = useState<number>(0);
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const [file, setFile] = useState<object>({});
+  const [file, setFile] = useState<FileSubmitProps>({});
   const { data: user } = useFetchUser();
   const isUserHasTeam = useMemo(() => user?.result.team, [user]);
 
@@ -33,7 +48,13 @@ export const SubmitPage: React.FC = () => {
         position: toast.POSITION.BOTTOM_RIGHT,
         theme: "dark",
       });
-    fileUpload(file)
+    if (file.name === undefined)
+      return toast.error("파일을 등록해주세요 😞", {
+        autoClose: 3000,
+        position: toast.POSITION.BOTTOM_RIGHT,
+        theme: "dark",
+      });
+    fileUpload(file, { onUploadProgress: setUploadPercentage })
       .then(() => {
         toast.success("파일 제출에 성공하셨습니다 😎", {
           autoClose: 3000,
@@ -48,12 +69,17 @@ export const SubmitPage: React.FC = () => {
           theme: "dark",
         });
       });
-
     if (inputRef.current) {
       inputRef.current.value = "";
       setFile({});
     }
   };
+
+  useEffect(() => {
+    if (uploadPercentage >= 100) {
+      setUploadPercentage(0);
+    }
+  }, [uploadPercentage]);
 
   return (
     <DefaultLayout conversion>
@@ -91,7 +117,7 @@ export const SubmitPage: React.FC = () => {
               <br /> - 기존 작성했던 코드를 과도하게 재사용했다고 판단되는 경우
               <br />- 외부 유료 asset 사용
             </S.SubmitPageInfoContainer>
-            <div>
+            <S.SubmitPageFormContainer style={{ maxWidth: "38rem" }}>
               <S.SubmitPageDeadLineTimeWrapper>
                 <div style={{ marginBottom: "3rem" }}>
                   <div style={{ fontSize: "3rem", fontWeight: "300" }}>
@@ -112,10 +138,13 @@ export const SubmitPage: React.FC = () => {
                 type="submit"
                 onClick={handleOnSubmit}
                 variant="contained"
+                disabled={uploadPercentage > 0}
               >
-                파일 제출
+                {uploadPercentage !== 0
+                  ? `🚀 업로드 중 - ${uploadPercentage}%`
+                  : "파일 제출"}
               </Button>
-            </div>
+            </S.SubmitPageFormContainer>
           </S.SubmitPageInfoWrapper>
         </S.SubmitPageContainer>
       </S.SubmitPageWrapper>

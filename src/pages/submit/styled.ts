@@ -24,6 +24,14 @@ export const SubmitPageContainer = styled.div`
   }
 `;
 
+export const SubmitPageFormContainer = styled.div`
+  & > button {
+    :disabled {
+      background-color: var(--color-primary-darker);
+    }
+  }
+`;
+
 export const SubmitPageInfoContainer = styled.div`
   display: flex;
   font-size: 1.8rem;
