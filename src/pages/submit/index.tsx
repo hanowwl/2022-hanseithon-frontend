@@ -24,7 +24,7 @@ export interface FileSubmitProps {
 }
 export const SubmitPage: React.FC = () => {
   const [uploadPercentage, setUploadPercentage] = useState<number>(0);
-  const [processing, setProcessing] = useState(false);
+  const [processing, setProcessing] = useState<boolean>(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [file, setFile] = useState<FileSubmitProps>({});
   const { data: user } = useFetchUser();
