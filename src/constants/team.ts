@@ -32,3 +32,12 @@ export const TeamPart: TeamPartType = {
   LIVING: "생활",
   GAME: "게임",
 } as const;
+
+export type FileType = {
+  [key: string]: string | undefined;
+};
+
+export const FilePart: FileType = {
+  middle: "중간",
+  final: "최종",
+} as const;
