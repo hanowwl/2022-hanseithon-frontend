@@ -1,13 +1,13 @@
 import React from "react";
 
 import { UserNameResponse } from "src/api/user";
-import { TeamPart } from "src/constants";
+import { TEAM_PART, TEAM_TYPE } from "src/constants";
 
 import * as S from "./styled";
 
 export interface TeamInfoCardProps {
   name: string;
-  type: "GAME" | "LIVING";
+  type: TEAM_TYPE;
   owner: { name: string };
   description: string;
   members: UserNameResponse[];
@@ -21,7 +21,7 @@ export const TeamInfoCard: React.FC<TeamInfoCardProps> = ({
   members,
 }) => (
   <S.TeamInfoCardContainer>
-    <S.TeamInfoCardTypeBox>{TeamPart[type]}</S.TeamInfoCardTypeBox>
+    <S.TeamInfoCardTypeBox>{TEAM_PART[type]}</S.TeamInfoCardTypeBox>
     <div>
       <S.TeamInfoCardTitle>{name}</S.TeamInfoCardTitle>
       <S.TeamInfoCardDescription>{description}</S.TeamInfoCardDescription>

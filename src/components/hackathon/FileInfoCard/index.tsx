@@ -1,6 +1,6 @@
 import React from "react";
 
-import { FilePart, TeamPart } from "src/constants";
+import { FILE_PART, TEAM_PART, TEAM_TYPE } from "src/constants";
 
 import * as S from "./styled";
 
@@ -8,7 +8,7 @@ export interface FileInfoCardProps {
   name: string;
   size: number;
   type: "middle" | "final";
-  teamType: "GAME" | "LIVING";
+  teamType: TEAM_TYPE;
 }
 
 export const formatBytes = (bytes: number) => {
@@ -34,7 +34,7 @@ export const FileInfoCard: React.FC<FileInfoCardProps> = ({
       </S.FileInfoCardDescription>
       <div style={{ marginTop: "1.5rem" }}>
         <S.FileInfoCardUserContainer>
-          {TeamPart[teamType]}부분 {FilePart[type]} 제출
+          {TEAM_PART[teamType]}부분 {FILE_PART[type]} 제출
         </S.FileInfoCardUserContainer>
       </div>
     </div>
