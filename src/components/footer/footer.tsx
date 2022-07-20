@@ -70,7 +70,8 @@ export const Footer: React.FC = () => (
         </S.FooterSponsorWrapper>
 
         <S.FooterCopyright>
-          Copyright © 2022 Mirny Inc. ALL rights reserved.
+          Copyright © 2022 Hansei Cyber Security High School. ALL rights
+          reserved.
         </S.FooterCopyright>
       </S.FooterWrapper>
     </S.FooterContentContainer>
