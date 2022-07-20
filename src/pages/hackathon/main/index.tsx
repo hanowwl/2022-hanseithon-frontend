@@ -1,9 +1,14 @@
 import React from "react";
 import YouTube from "react-youtube";
 
-import { Button, HackerProfileCard, Navbar } from "src/components";
-import { TeamActivityLog } from "src/components/hackathon/TeamActivityLog";
-import { TeamInfoCard } from "src/components/hackathon/TeamInfoCard";
+import {
+  Button,
+  FileInfoCard,
+  HackerProfileCard,
+  Navbar,
+  TeamInfoCard,
+  TeamActivityLog,
+} from "src/components";
 import { useModal } from "src/hook";
 import { useFetchAllUser, useFetchUser } from "src/hook/query";
 
@@ -52,6 +57,7 @@ export const HackathonMainPage: React.FC = () => {
       },
     });
   };
+
   return (
     <S.HackathonMainPageContainer>
       <Navbar userInfo={user} fetch={isFetching} />
@@ -109,14 +115,35 @@ export const HackathonMainPage: React.FC = () => {
           </S.HackathonPageNavbarList>
         </S.HackathonPageNavbar>
         <div>
-          {hackerProfiles?.result.map((v, i) => (
-            <div>
-              <TeamActivityLog key={v.team.name + i.toString()} {...v} />
-              {v.team.name && (
-                <TeamInfoCard key={v.team.name + i.toString()} {...v.team} />
-              )}
-            </div>
-          ))}
+          {hackerProfiles?.result.map((v, i) => {
+            if (v.team) {
+              return (
+                <div>
+                  <TeamActivityLog key={v.team.name + i.toString()} {...v} />
+                  {v.team.name && (
+                    <TeamInfoCard
+                      key={v.team.name + i.toString()}
+                      {...v.team}
+                    />
+                  )}
+                </div>
+              );
+            }
+            if (v.file) {
+              return (
+                <div>
+                  <TeamActivityLog key={v.file.name + i.toString()} {...v} />
+                  {v.file.name && (
+                    <FileInfoCard
+                      key={v.file.name + i.toString()}
+                      {...v.file}
+                    />
+                  )}
+                </div>
+              );
+            }
+            return <div />;
+          })}
         </div>
       </section>
     </S.HackathonMainPageContainer>

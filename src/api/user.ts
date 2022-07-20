@@ -36,7 +36,15 @@ export type UserNameResponse = {
 };
 
 export type AllUserProfileResponse = {
-  team: {
+  file?: {
+    id: string;
+    name: string;
+    size: number;
+    type: "middle" | "final";
+    team: string;
+    teamType: "GAME" | "LIVING";
+  };
+  team?: {
     name: string;
     type: "GAME" | "LIVING";
     owner: { name: string };
