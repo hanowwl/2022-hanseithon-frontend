@@ -53,7 +53,7 @@ export const Footer: React.FC = () => (
           </S.FooterDeveloperGithub>
           운영 : 전효림, 권민서, 김도훈, 김재완, 선민우, 윤소영, 양승철, 정요찬,
           이은혁, 이채원, 김준석 <br /> <br />
-          총괄: 박현경 | 주소 : 서울특별시 마포구 공덕동 122-37
+          총괄: 박현경 | 주소 : 서울 마포구 마포대로11길 44-80
         </S.FooterDescription>
         <S.FooterSponsorWrapper>
           <S.FooterSponsorAegis src={SponsorAegisPNG} />
