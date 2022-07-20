@@ -28,16 +28,16 @@ export type TeamPartType = {
   [key: string]: string | undefined;
 };
 
-export const TeamPart: TeamPartType = {
+export const TEAM_PART: TeamPartType = {
   LIVING: "생활",
   GAME: "게임",
 } as const;
 
-export type FileType = {
+export type FilePartType = {
   [key: string]: string | undefined;
 };
 
-export const FilePart: FileType = {
+export const FILE_PART: FilePartType = {
   middle: "중간",
   final: "최종",
 } as const;
