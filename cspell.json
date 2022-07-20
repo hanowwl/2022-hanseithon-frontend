@@ -20,7 +20,13 @@
     "Csvg",
     "hsoc",
     "Lqcr",
-    "modestbranding"
+    "modestbranding",
+    "Aegis",
+    "Unity",
+    "Jpub",
+    "Inflearn",
+    "HanbitMedia",
+    "Hansei Cyber Security High School"
   ],
   "flagWords": [],
   "ignorePaths": ["node_modules/**"]
