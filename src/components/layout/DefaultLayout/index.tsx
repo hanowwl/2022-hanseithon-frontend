@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Navbar } from "src/components/common";
+import { Footer } from "src/components/footer/footer";
 import { useFetchUser } from "src/hook/query";
 
 import * as S from "./styled";
@@ -22,6 +23,7 @@ export const DefaultLayout: React.FC<DefaultLayoutProps> = ({
       <S.DefaultLayoutContainer dimensions={conversion}>
         {children}
       </S.DefaultLayoutContainer>
+      <Footer />
     </>
   );
 };
