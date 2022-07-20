@@ -1,11 +1,6 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable consistent-return */
-import React, {
-  useMemo,
-  useCallback,
-  useRef,
-  useState,
-  useEffect,
-} from "react";
+import React, { useMemo, useCallback, useRef, useState } from "react";
 import { toast } from "react-toastify";
 
 import { fileUpload } from "src/api";
@@ -29,6 +24,7 @@ export interface FileSubmitProps {
 }
 export const SubmitPage: React.FC = () => {
   const [uploadPercentage, setUploadPercentage] = useState<number>(0);
+  const [processing, setProcessing] = useState(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [file, setFile] = useState<FileSubmitProps>({});
   const { data: user } = useFetchUser();
@@ -54,8 +50,10 @@ export const SubmitPage: React.FC = () => {
         position: toast.POSITION.BOTTOM_RIGHT,
         theme: "dark",
       });
-    fileUpload(file, { onUploadProgress: setUploadPercentage })
+    fileUpload(file, { setUploadPercentage, setProcessing })
       .then(() => {
+        setUploadPercentage(0);
+        setProcessing(false);
         toast.success("파일 제출에 성공하셨습니다 😎", {
           autoClose: 3000,
           position: toast.POSITION.BOTTOM_RIGHT,
@@ -63,6 +61,8 @@ export const SubmitPage: React.FC = () => {
         });
       })
       .catch(() => {
+        setUploadPercentage(0);
+        setProcessing(false);
         toast.error("파일 제출에 실패했어요 😞", {
           autoClose: 3000,
           position: toast.POSITION.BOTTOM_RIGHT,
@@ -74,12 +74,6 @@ export const SubmitPage: React.FC = () => {
       setFile({});
     }
   };
-
-  useEffect(() => {
-    if (uploadPercentage >= 100) {
-      setUploadPercentage(0);
-    }
-  }, [uploadPercentage]);
 
   return (
     <DefaultLayout conversion>
@@ -142,7 +136,9 @@ export const SubmitPage: React.FC = () => {
                 disabled={uploadPercentage > 0}
               >
                 {uploadPercentage !== 0
-                  ? `🚀 업로드 중 - ${uploadPercentage}%`
+                  ? processing
+                    ? "🚀 업로드 처리 중"
+                    : `🚀 업로드 중 - ${uploadPercentage}%`
                   : "파일 제출"}
               </Button>
             </S.SubmitPageFormContainer>

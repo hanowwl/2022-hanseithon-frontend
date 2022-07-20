@@ -71,9 +71,11 @@ export const checkIsInternalNetwork = async (): Promise<APIResponse<"">> => {
 export const fileUpload = async (
   uploadData: FileSubmitProps,
   {
-    onUploadProgress,
+    setUploadPercentage,
+    setProcessing,
   }: {
-    onUploadProgress: React.Dispatch<React.SetStateAction<number>>;
+    setUploadPercentage: React.Dispatch<React.SetStateAction<number>>;
+    setProcessing: React.Dispatch<React.SetStateAction<boolean>>;
   },
 ): Promise<APIResponse<{}>> => {
   const blobUploadData = uploadData as Blob;
@@ -87,7 +89,8 @@ export const fileUpload = async (
       const progress = Math.round(
         (progressEvent.loaded * 100) / progressEvent.total,
       );
-      onUploadProgress(progress);
+      setUploadPercentage(progress);
+      if (progress >= 100) setProcessing(true);
     },
   });
   return data;
