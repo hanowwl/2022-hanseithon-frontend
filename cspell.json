@@ -20,7 +20,12 @@
     "Csvg",
     "hsoc",
     "Lqcr",
-    "modestbranding"
+    "modestbranding",
+    "Aegis",
+    "Unity",
+    "Jpub",
+    "Inflearn",
+    "HanbitMedia"
   ],
   "flagWords": [],
   "ignorePaths": ["node_modules/**"]

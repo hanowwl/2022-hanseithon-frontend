@@ -1,10 +1,10 @@
 import React from "react";
 
-import SponsorAegis from "src/assets/png/hanseithon-sponsor-aegis.png";
-import SponsorHanbitMedia from "src/assets/png/hanseithon-sponsor-hanbitmedia.png";
-import SponsorInflearn from "src/assets/png/hanseithon-sponsor-inflearn.png";
-import SponsorJpub from "src/assets/png/hanseithon-sponsor-jpub.png";
-import SponsorUnity from "src/assets/png/hanseithon-sponsor-unity.png";
+import SponsorAegisPNG from "src/assets/png/hanseithon-sponsor1.png";
+import SponsorUnityPNG from "src/assets/png/hanseithon-sponsor2.png";
+import SponsorJpubPNG from "src/assets/png/hanseithon-sponsor3.png";
+import SponsorInflearnPNG from "src/assets/png/hanseithon-sponsor4.png";
+import SponsorHanbitMediaPNG from "src/assets/png/hanseithon-sponsor5.png";
 
 import * as S from "./styled";
 
@@ -56,16 +56,16 @@ export const Footer: React.FC = () => (
           총괄: 박현경 | 주소 : 서울특별시 마포구 공덕동 122-37
         </S.FooterDescription>
         <S.FooterSponsorWrapper>
-          <S.FooterSponsorAegis src={SponsorAegis} />
-          <S.FooterSponsorHanbitMedia src={SponsorHanbitMedia} />
-          <S.FooterSponsorJpub src={SponsorJpub} />
-          <S.FooterSponsorInflearn src={SponsorInflearn} />
+          <S.FooterSponsorAegis src={SponsorAegisPNG} />
+          <S.FooterSponsorHanbitMedia src={SponsorHanbitMediaPNG} />
+          <S.FooterSponsorJpub src={SponsorJpubPNG} />
+          <S.FooterSponsorInflearn src={SponsorInflearnPNG} />
           <S.FooterUnityButton
             href="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/a5f9427a-d6f6-4e61-8f5e-ea5fd484048c/Unity_Edu_License_%EC%8B%A0%EC%B2%AD_%EB%B0%8F_Unity_%EC%84%A4%EC%B9%98%EA%B0%80%EC%9D%B4%EB%93%9C.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220720%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220720T064319Z&X-Amz-Expires=86400&X-Amz-Signature=f8dee57cb8e5ab8c5312d48d683c09f6d63c3477d392115b254b2bd395c82c23&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Unity%2520Edu%2520License%2520%25EC%258B%25A0%25EC%25B2%25AD%2520%25EB%25B0%258F%2520Unity%2520%25EC%2584%25A4%25EC%25B9%2598%25EA%25B0%2580%25EC%259D%25B4%25EB%2593%259C.pdf%22&x-id=GetObject"
             target="_blank"
             rel="noreferrer"
           >
-            <S.FooterSponsorUnity src={SponsorUnity} />
+            <S.FooterSponsorUnity src={SponsorUnityPNG} />
           </S.FooterUnityButton>
         </S.FooterSponsorWrapper>
 
