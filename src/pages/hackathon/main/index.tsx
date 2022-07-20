@@ -23,7 +23,7 @@ export const HackathonMainPage: React.FC = () => {
         description: "영상 공개는 7월 20일 오후 4시 정각에 진행될 예정이에요!",
         content: (
           <YouTube
-            videoId="EqC5AQLqcr8"
+            videoId="6S0IAKzcYX8"
             style={{ marginBottom: "2rem" }}
             opts={{
               width: "100%",
